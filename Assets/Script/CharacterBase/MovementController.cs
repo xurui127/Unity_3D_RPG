@@ -5,11 +5,10 @@ namespace Player
 {
     public class MovementController : MonoBehaviour
     {
+        #region System Function
         private Animator anim;
         private CharacterController playerController;
-
-        [SerializeField] float walkSpeed;
-        [SerializeField] float rotSpeed;
+        private float walkSpeed = 4f;
 
         // Start is called before the first frame update
         void Start()
@@ -23,6 +22,8 @@ namespace Player
         {
             CharacterMove();
         }
+        #endregion
+        #region Charactor Movement
         private void CharacterMove()
         {
             float horizontal = Input.GetAxis("Horizontal");
@@ -36,9 +37,8 @@ namespace Player
                 playerController.Move(move * walkSpeed * Time.deltaTime);
                 anim.SetFloat("speed", move.magnitude);
             }
-
-
         }
+        #endregion
     }
 }
 
