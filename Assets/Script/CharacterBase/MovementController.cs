@@ -20,7 +20,9 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            CharacterMove();
+            CharacterMove(); 
+            CharacterRoll();
+            CharacterAttack();
         }
         #endregion
         #region Charactor Movement
@@ -36,6 +38,20 @@ namespace Player
                 transform.rotation = Quaternion.LookRotation(move, Vector3.up);
                 playerController.Move(move * walkSpeed * Time.deltaTime);
                 anim.SetFloat("speed", move.magnitude);
+            }
+        }
+        private void CharacterRoll() 
+        {
+            if (Input.GetButtonDown("Roll"))
+            {
+                anim.SetTrigger("roll");
+            }
+        }
+        private void CharacterAttack() 
+        {
+            if (Input.GetButtonDown("Attack"))
+            {
+                anim.SetTrigger("attack");
             }
         }
         #endregion
