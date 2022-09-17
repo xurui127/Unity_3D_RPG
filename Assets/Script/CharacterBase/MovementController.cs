@@ -21,6 +21,8 @@ namespace Player
         void Update()
         {
             CharacterMove();
+            CharacterAttack();
+            CharacterRoll();
         }
         #endregion
         #region Charactor Movement
@@ -31,11 +33,25 @@ namespace Player
 
             if (Mathf.Abs(horizontal) >= 0.1f || Mathf.Abs(vertical) >= 0.1f)
             {
-                //var dir = horizontal * transform.right + vertical * transform.forward;
                 var move = new Vector3(horizontal, 0, vertical);
                 transform.rotation = Quaternion.LookRotation(move, Vector3.up);
                 playerController.Move(move * walkSpeed * Time.deltaTime);
                 anim.SetFloat("speed", move.magnitude);
+            }
+        }
+
+        private void CharacterAttack()
+        {
+            if (Input.GetButtonDown("Attack1"))
+            {
+                anim.SetTrigger("attack");
+            }
+        }
+        private void CharacterRoll()
+        {
+            if (Input.GetButtonDown("Roll"))
+            {
+                anim.SetTrigger("roll");
             }
         }
         #endregion
