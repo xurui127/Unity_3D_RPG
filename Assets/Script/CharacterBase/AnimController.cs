@@ -16,7 +16,7 @@ public class AnimController : MonoBehaviour
     string[] preTxt = { "Locomotion", "SwordAndShield_Combo01", "SwordAndShield_Combo02", "SwordAndShield_Combo03" };
     private bool isBusy;
     public bool IsBusy => isBusy;
-    #region
+    #region System
 
     // Start is called before the first frame update
     void Start()
