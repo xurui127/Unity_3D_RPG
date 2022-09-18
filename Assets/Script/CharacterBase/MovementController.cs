@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Player
 {
@@ -49,9 +48,10 @@ namespace Player
         }
         private void CharacterAttack() 
         {
+           // animController.ComboHaddler();
             if (Input.GetButtonDown("Attack"))
             {
-                animController.SetAnimation("attack");
+                animController.AttackHaddler();
             }
         }
         #endregion
