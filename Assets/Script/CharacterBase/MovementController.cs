@@ -6,15 +6,15 @@ namespace Player
     public class MovementController : MonoBehaviour
     {
         #region System Function
-        private Animator anim;
         private CharacterController playerController;
+        private AnimController animController;
         private float walkSpeed = 4f;
 
         // Start is called before the first frame update
         void Start()
         {
-            anim = GetComponent<Animator>();
             playerController = GetComponent<CharacterController>();
+            animController = GetComponent<AnimController>();
         }
 
         // Update is called once per frame
@@ -37,21 +37,21 @@ namespace Player
                 var move = new Vector3(horizontal, 0, vertical);
                 transform.rotation = Quaternion.LookRotation(move, Vector3.up);
                 playerController.Move(move * walkSpeed * Time.deltaTime);
-                anim.SetFloat("speed", move.magnitude);
+                animController.SetAnimation("speed", move.magnitude);
             }
         }
         private void CharacterRoll() 
         {
             if (Input.GetButtonDown("Roll"))
             {
-                anim.SetTrigger("roll");
+                animController.SetAnimation("roll");
             }
         }
         private void CharacterAttack() 
         {
             if (Input.GetButtonDown("Attack"))
             {
-                anim.SetTrigger("attack");
+                animController.SetAnimation("attack");
             }
         }
         #endregion
