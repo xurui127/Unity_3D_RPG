@@ -19,8 +19,10 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            CharacterMove(); 
+
+            CharacterMove();
             CharacterRoll();
+
             CharacterAttack();
         }
         #endregion
@@ -29,26 +31,35 @@ namespace Player
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-
-            if (Mathf.Abs(horizontal) >= 0.1f || Mathf.Abs(vertical) >= 0.1f)
+            if (animController.IsBusy == false)
             {
-                //var dir = horizontal * transform.right + vertical * transform.forward;
-                var move = new Vector3(horizontal, 0, vertical);
-                transform.rotation = Quaternion.LookRotation(move, Vector3.up);
-                playerController.Move(move * walkSpeed * Time.deltaTime);
-                animController.SetAnimation("speed", move.magnitude);
+                if (Mathf.Abs(horizontal) >= 0.1f || Mathf.Abs(vertical) >= 0.1f)
+                {
+                    //var dir = horizontal * transform.right + vertical * transform.forward;
+                    var move = new Vector3(horizontal, 0, vertical);
+                    transform.rotation = Quaternion.LookRotation(move, Vector3.up);
+                    playerController.Move(move * walkSpeed * Time.deltaTime);
+                    animController.SetAnimation("speed", move.magnitude);
+                }
             }
+            else
+            {
+                animController.SetAnimation("speed",0);
+
+            }
+
         }
-        private void CharacterRoll() 
+
+        private void CharacterRoll()
         {
             if (Input.GetButtonDown("Roll"))
             {
-                animController.SetAnimation("roll");
+                animController.RollHaddler();
             }
         }
-        private void CharacterAttack() 
+        private void CharacterAttack()
         {
-           // animController.ComboHaddler();
+            // animController.ComboHaddler();
             if (Input.GetButtonDown("Attack"))
             {
                 animController.AttackHaddler();
