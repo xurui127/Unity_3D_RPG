@@ -45,7 +45,6 @@ namespace Player
             else
             {
                 animController.SetAnimation("speed",0);
-
             }
 
         }
@@ -62,7 +61,7 @@ namespace Player
             // animController.ComboHaddler();
             if (Input.GetButtonDown("Attack"))
             {
-                animController.AttackHaddler();
+                    animController.AttackHaddler();
             }
         }
         #endregion

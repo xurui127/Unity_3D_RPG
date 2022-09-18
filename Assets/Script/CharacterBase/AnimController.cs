@@ -48,25 +48,27 @@ public class AnimController : MonoBehaviour
             hitCount = 0;
             isBusy = false;
         }
+        else if  (animInfo.IsName(idleTxt))
+        {
+            isBusy = false;
+
+        }
     }
     public void AttackHaddler()
     {
 
         if (animInfo.IsName(idleTxt) && hitCount == 0)
         {
-            isBusy = true;
             hitCount = 1;
             SetAnimation(attackPreTxt + hitCount.ToString());
         }
         else if (animInfo.IsName(attackPreAnimTxt + hitCount.ToString()) && hitCount == 1 && animInfo.normalizedTime > 0.5f)
         {
-            isBusy = true;
             hitCount = 2;
             SetAnimation(attackPreTxt + hitCount.ToString());
         }
         else if (animInfo.IsName(attackPreAnimTxt + hitCount.ToString()) && hitCount == 2 && animInfo.normalizedTime > 0.5f)
         {
-            isBusy = true;
             hitCount = 3;
             SetAnimation(attackPreTxt + hitCount.ToString());
         }
@@ -74,10 +76,9 @@ public class AnimController : MonoBehaviour
 
     public void RollHaddler()
     {
-        if (isBusy == false)
-        {
+      
             SetAnimation(rollTxt);
-        }
+        
     }
     public void Busy()
     {
