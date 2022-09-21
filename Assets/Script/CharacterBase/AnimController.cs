@@ -77,7 +77,7 @@ public class AnimController : MonoBehaviour
     public void RollHaddler()
     {
       
-            SetAnimation(rollTxt);
+       SetAnimation(rollTxt);
         
     }
     public void Busy()
