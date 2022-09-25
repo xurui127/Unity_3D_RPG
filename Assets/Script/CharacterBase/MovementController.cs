@@ -8,7 +8,7 @@ namespace Player
         private PlayerInputSystem input;
         private CharacterController playerController;
         private AnimController animController;
-        private float walkSpeed = 4f;
+        private float speed = 4f;
         #region System Function
 
 
@@ -24,7 +24,7 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-
+            CharacterRun();
             //CharacterMove();
             //CharacterRoll();
 
@@ -34,40 +34,25 @@ namespace Player
         #region Charactor Movement
         private void CharacterMove()
         {
-            //float horizontal = Input.GetAxis("Horizontal");
-            //float vertical = Input.GetAxis("Vertical");
-            float horizontal = input.Horizontal;
-            float vertical = input.Vertical;
-
-            if (animController.IsBusy == false)
-            {
-                if (Mathf.Abs(horizontal) >= 0.1f || Mathf.Abs(vertical) >= 0.1f)
-                {
-                    //var dir = horizontal * transform.right + vertical * transform.forward;
-                    var move = new Vector3(horizontal, 0, vertical);
-                    transform.rotation = Quaternion.LookRotation(move, Vector3.up);
-                    playerController.Move(move * walkSpeed * Time.deltaTime);
-
-                    animController.SetAnimation("speed", move.magnitude);
-                }
-                else
-                {
-                    animController.SetAnimation("speed", 0);
-                }
-                
-            }
-            else
-            {
-                animController.SetAnimation("speed",0);
-            }
+            animController.SetAnimation("speed", input.moveValue.magnitude);
+            playerController.Move(input.moveValue * speed * Time.deltaTime);
+        }
+        private void CharacterRoatition()
+        {
+            transform.rotation = Quaternion.LookRotation(input.moveValue, Vector3.up);
 
         }
-
+        private void CharacterRun()
+        {
+            CharacterMove();
+            CharacterRoatition();
+        }
         private void CharacterRoll()
         {
             //if (Input.GetButtonDown("Roll"))
             //{
-            if (input.Roll) { 
+            if (input.Roll)
+            {
                 animController.RollHaddler();
             }
         }
@@ -83,3 +68,32 @@ namespace Player
     }
 }
 
+
+#region old Input
+//float horizontal = Input.GetAxis("Horizontal");
+//float vertical = Input.GetAxis("Vertical");
+//float horizontal = input.Horizontal;
+//float vertical = input.Vertical;
+
+//if (animController.IsBusy == false)
+//{
+//    if (Mathf.Abs(horizontal) >= 0.1f || Mathf.Abs(vertical) >= 0.1f)
+//    {
+//        //var dir = horizontal * transform.right + vertical * transform.forward;
+//        var move = new Vector3(horizontal, 0, vertical);
+//        transform.rotation = Quaternion.LookRotation(move, Vector3.up);
+//        playerController.Move(move * walkSpeed * Time.deltaTime);
+
+//        animController.SetAnimation("speed", move.magnitude);
+//    }
+//    else
+//    {
+//        animController.SetAnimation("speed", 0);
+//    }
+
+//}
+//else
+//{
+//    animController.SetAnimation("speed",0);
+//}
+#endregion

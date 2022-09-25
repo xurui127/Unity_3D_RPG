@@ -5,14 +5,20 @@ public class PlayerInputSystem : MonoBehaviour
     PlayerInputActions playerInputActions;
 
     Vector2 axes => playerInputActions.GamePlay.Move.ReadValue<Vector2>();
-    public float Horizontal => axes.x;
-    public float Vertical => axes.y;
-    public bool Attack => playerInputActions.GamePlay.Attack.WasPressedThisFrame();
+    Vector2 smoothInputVelocity;
+    [SerializeField]float smoothSpeed = 0.05f;
+    Vector2 smoothInput;
+    public float Horizontal => GetSmoothInput().x;
+    public float Vertical => GetSmoothInput().y;
+    public bool Move => Mathf.Abs(GetSmoothInput().x) > 0.1f|| Mathf.Abs(GetSmoothInput().y) > 0.1f;
+    public Vector3 moveValue => new Vector3(GetSmoothInput().x, 0, GetSmoothInput().y);
+    public bool Attack => playerInputActions.GamePlay.Attack.triggered;
     public bool Roll => playerInputActions.GamePlay.Roll.WasPressedThisFrame();
 
+   
 
     //public bool Move => axes.x != 0 || axes.y != 0;
-    public bool Move => !playerInputActions.GamePlay.Move.WasReleasedThisFrame();
+   // public bool Move =>playerInputActions.GamePlay.Move.WasPressedThisFrame();
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();   
@@ -20,5 +26,15 @@ public class PlayerInputSystem : MonoBehaviour
     public void EnableGamePlayInputs()
     {
         playerInputActions.GamePlay.Enable();
+    }
+    public void Update()
+    {
+       
+    }
+
+    private Vector2 GetSmoothInput()
+    {
+        smoothInput = Vector2.SmoothDamp(smoothInput, axes, ref smoothInputVelocity, smoothSpeed);
+        return smoothInput;
     }
 }
