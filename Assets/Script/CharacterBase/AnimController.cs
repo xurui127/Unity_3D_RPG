@@ -48,10 +48,9 @@ public class AnimController : MonoBehaviour
             hitCount = 0;
             isBusy = false;
         }
-        else if  (animInfo.IsName(idleTxt))
+        else if (animInfo.IsName(idleTxt))
         {
             isBusy = false;
-
         }
     }
     public void AttackHaddler()

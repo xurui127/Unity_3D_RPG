@@ -8,7 +8,7 @@ namespace Player
         private PlayerInputSystem input;
         private CharacterController playerController;
         private AnimController animController;
-        private float speed = 4f;
+        private float speed = 5f;
         #region System Function
 
 
@@ -18,17 +18,18 @@ namespace Player
             playerController = GetComponent<CharacterController>();
             animController = GetComponent<AnimController>();
             input = GetComponent<PlayerInputSystem>();
-            input.EnableGamePlayInputs();
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-            CharacterRun();
-            //CharacterMove();
-            //CharacterRoll();
-
-            //CharacterAttack();
+            if (animController.IsBusy == false)
+            {
+                CharacterRun();
+                CharacterRoll();
+                CharacterAttack();
+            }
         }
         #endregion
         #region Charactor Movement
@@ -40,17 +41,19 @@ namespace Player
         private void CharacterRoatition()
         {
             transform.rotation = Quaternion.LookRotation(input.moveValue, Vector3.up);
-
         }
         private void CharacterRun()
         {
-            CharacterMove();
-            CharacterRoatition();
+            if (input.Move)
+            {
+                CharacterMove();
+                CharacterRoatition();
+            }
+
         }
         private void CharacterRoll()
         {
-            //if (Input.GetButtonDown("Roll"))
-            //{
+
             if (input.Roll)
             {
                 animController.RollHaddler();
@@ -58,11 +61,10 @@ namespace Player
         }
         private void CharacterAttack()
         {
-            // animController.ComboHaddler();
-            //if (Input.GetButtonDown("Attack"))
-            //{
-            //        animController.AttackHaddler();
-            //}
+            if (input.Attack)
+            {
+                animController.AttackHaddler();
+            }
         }
         #endregion
     }
