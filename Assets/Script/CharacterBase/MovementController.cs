@@ -44,8 +44,12 @@ namespace Player
         }
         private void CharacterRun()
         {
+            if (input.Move)
+            {
             CharacterMove();
             CharacterRoatition();
+            }
+
         }
         private void CharacterRoll()
         {

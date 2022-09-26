@@ -27,10 +27,6 @@ public class PlayerInputSystem : MonoBehaviour
     {
         playerInputActions.GamePlay.Enable();
     }
-    public void Update()
-    {
-       
-    }
 
     private Vector2 GetSmoothInput()
     {
