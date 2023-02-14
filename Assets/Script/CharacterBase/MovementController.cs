@@ -26,9 +26,9 @@ namespace Player
         {
             CharacterRun();
             //CharacterMove();
-            //CharacterRoll();
+            CharacterRoll();
 
-            //CharacterAttack();
+            CharacterAttack();
         }
         #endregion
         #region Charactor Movement
@@ -40,14 +40,13 @@ namespace Player
         private void CharacterRoatition()
         {
             transform.rotation = Quaternion.LookRotation(input.moveValue, Vector3.up);
-
         }
         private void CharacterRun()
         {
-            if (input.Move)
+            if (input.Move && !animController.IsBusy)
             {
-            CharacterMove();
-            CharacterRoatition();
+                CharacterMove();
+                CharacterRoatition();
             }
 
         }
@@ -55,7 +54,7 @@ namespace Player
         {
             //if (Input.GetButtonDown("Roll"))
             //{
-            if (input.Roll)
+            if (input.Roll && !animController.IsBusy)
             {
                 animController.RollHaddler();
             }
@@ -63,10 +62,10 @@ namespace Player
         private void CharacterAttack()
         {
             // animController.ComboHaddler();
-            //if (Input.GetButtonDown("Attack"))
-            //{
-            //        animController.AttackHaddler();
-            //}
+            if (input.Attack && !animController.IsBusy)
+            {
+                animController.AttackHaddler();
+            }
         }
         #endregion
     }

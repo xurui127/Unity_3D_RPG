@@ -12,7 +12,7 @@ public class PlayerInputSystem : MonoBehaviour
     public float Vertical => GetSmoothInput().y;
     public bool Move => Mathf.Abs(GetSmoothInput().x) > 0.1f|| Mathf.Abs(GetSmoothInput().y) > 0.1f;
     public Vector3 moveValue => new Vector3(GetSmoothInput().x, 0, GetSmoothInput().y);
-    public bool Attack => playerInputActions.GamePlay.Attack.triggered;
+    public bool Attack => playerInputActions.GamePlay.Attack.WasPressedThisFrame();
     public bool Roll => playerInputActions.GamePlay.Roll.WasPressedThisFrame();
 
    
@@ -32,5 +32,10 @@ public class PlayerInputSystem : MonoBehaviour
     {
         smoothInput = Vector2.SmoothDamp(smoothInput, axes, ref smoothInputVelocity, smoothSpeed);
         return smoothInput;
+    }
+
+    public void CachePlayerAttackInput()
+    {
+
     }
 }

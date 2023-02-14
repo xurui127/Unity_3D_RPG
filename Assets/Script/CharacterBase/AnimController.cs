@@ -1,33 +1,50 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Rendering.UI;
 
 public class AnimController : MonoBehaviour
 {
     Animator anim;
-    int hitCount = 0;
-    private AnimatorStateInfo animInfo;
+    int hitCount = 1;
+    private AnimatorStateInfo curAnimInfo;
+    private AnimatorStateInfo lastAnimInfo;
+    private AnimatorStateInfo preAnimInfo;
     private string attackPreAnimTxt = "SwordAndShield_Combo0";
     private string rollPreAnimTxt = "Roll_Battle_SwordAndShield";
     private string attackPreTxt = "attack ";
     private string idleTxt = "Locomotion";
     private string rollTxt = "roll";
-    string[] preTxt = { "Locomotion", "SwordAndShield_Combo01", "SwordAndShield_Combo02", "SwordAndShield_Combo03" };
-    private bool isBusy;
+    string[] preTxt = { "Locomotion","SwordAndShield_Combo01", "SwordAndShield_Combo02", "SwordAndShield_Combo03" };
+    private bool isBusy => (!curAnimInfo.IsName(preTxt[0]) ? true: false);
     public bool IsBusy => isBusy;
+    private UnityEvent HitCounting;
+    private UnityEvent ChechLastAnim;
+    [Range(0f, 1f)]
+    [SerializeField] private float comboCancletime;
     #region System
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+        if (HitCounting == null)
+        {
+            HitCounting = new UnityEvent();
+        }
+        HitCounting.AddListener(CheckHitCount);
+        if (ChechLastAnim == null)
+        {
+            ChechLastAnim = new UnityEvent();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         ComboHaddler();
+       // Debug.Log(attackPreAnimTxt + hitCount.ToString());
     }
     #endregion
     #region Animations Function
@@ -41,37 +58,38 @@ public class AnimController : MonoBehaviour
     }
     public void ComboHaddler()
     {
-        animInfo = anim.GetCurrentAnimatorStateInfo(0);
+       
+        curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
 
-        if (!animInfo.IsName(idleTxt) && animInfo.normalizedTime >= 1.0f)
+        
+        if(curAnimInfo.IsName(attackPreAnimTxt + hitCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
         {
-            hitCount = 0;
-            isBusy = false;
+           
+            hitCount++;
+            HitCounting.Invoke();
+            lastAnimInfo = curAnimInfo;
         }
-        else if  (animInfo.IsName(idleTxt))
+        if (curAnimInfo.IsName(idleTxt) || curAnimInfo.IsName(rollTxt) )
         {
-            isBusy = false;
+            if ( curAnimInfo.normalizedTime >= comboCancletime)
+            {
+                hitCount = 1;
+            }
+        }
+  
 
-        }
     }
-    public void AttackHaddler()
+    private void CheckHitCount()
     {
-
-        if (animInfo.IsName(idleTxt) && hitCount == 0)
+        if (hitCount > 3)
         {
             hitCount = 1;
-            SetAnimation(attackPreTxt + hitCount.ToString());
         }
-        else if (animInfo.IsName(attackPreAnimTxt + hitCount.ToString()) && hitCount == 1 && animInfo.normalizedTime > 0.5f)
-        {
-            hitCount = 2;
-            SetAnimation(attackPreTxt + hitCount.ToString());
-        }
-        else if (animInfo.IsName(attackPreAnimTxt + hitCount.ToString()) && hitCount == 2 && animInfo.normalizedTime > 0.5f)
-        {
-            hitCount = 3;
-            SetAnimation(attackPreTxt + hitCount.ToString());
-        }
+    }
+
+    public void AttackHaddler()
+    {
+        SetAnimation(attackPreTxt + hitCount.ToString());
     }
 
     public void RollHaddler()
@@ -80,9 +98,9 @@ public class AnimController : MonoBehaviour
        SetAnimation(rollTxt);
         
     }
-    public void Busy()
-    {
-        isBusy = true;
-    }
+    //public void Busy()
+    //{
+    //    isBusy = true;
+    //}
     #endregion
 }
