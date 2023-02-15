@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering.UI;
 
 public class AnimController : MonoBehaviour
@@ -16,6 +17,7 @@ public class AnimController : MonoBehaviour
     private string attackPreTxt = "attack ";
     private string idleTxt = "Locomotion";
     private string rollTxt = "roll";
+    private string sprintTxt = "sprint";
     string[] preTxt = { "Locomotion","SwordAndShield_Combo01", "SwordAndShield_Combo02", "SwordAndShield_Combo03" };
     private bool isBusy => (!curAnimInfo.IsName(preTxt[0]) ? true: false);
     public bool IsBusy => isBusy;
@@ -56,6 +58,8 @@ public class AnimController : MonoBehaviour
     {
         anim.SetFloat(paraName, para);
     }
+    #endregion
+    #region Combo Anim Haddlers
     public void ComboHaddler()
     {
        
@@ -91,16 +95,17 @@ public class AnimController : MonoBehaviour
     {
         SetAnimation(attackPreTxt + hitCount.ToString());
     }
-
+    #endregion
+    #region Action Haddlers 
     public void RollHaddler()
     {
       
        SetAnimation(rollTxt);
         
     }
-    //public void Busy()
-    //{
-    //    isBusy = true;
-    //}
+    public void SprintHaddler()
+    {
+        SetAnimation(sprintTxt);
+    }
     #endregion
 }

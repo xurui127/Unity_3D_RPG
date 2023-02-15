@@ -27,7 +27,7 @@ namespace Player
             CharacterRun();
             //CharacterMove();
             CharacterRoll();
-
+            CharacterSprint();
             CharacterAttack();
         }
         #endregion
@@ -52,8 +52,7 @@ namespace Player
         }
         private void CharacterRoll()
         {
-            //if (Input.GetButtonDown("Roll"))
-            //{
+
             if (input.Roll && !animController.IsBusy)
             {
                 animController.RollHaddler();
@@ -61,10 +60,16 @@ namespace Player
         }
         private void CharacterAttack()
         {
-            // animController.ComboHaddler();
             if (input.Attack && !animController.IsBusy)
             {
                 animController.AttackHaddler();
+            }
+        }
+        private void CharacterSprint()
+        {
+            if (input.Sprint && !animController.IsBusy)
+            {
+                animController.SprintHaddler();
             }
         }
         #endregion
