@@ -8,6 +8,8 @@ namespace Player
         private PlayerInputSystem input;
         private CharacterController playerController;
         private AnimController animController;
+        private PlayerAttackManager attackManager;
+        private EnemyManager enemyManager;
         private float speed = 4f;
         #region System Function
 
@@ -18,6 +20,8 @@ namespace Player
             playerController = GetComponent<CharacterController>();
             animController = GetComponent<AnimController>();
             input = GetComponent<PlayerInputSystem>();
+            attackManager = GetComponent<PlayerAttackManager>();
+            enemyManager= GetComponent<EnemyManager>();
             input.EnableGamePlayInputs();
         }
 
@@ -62,7 +66,12 @@ namespace Player
         {
             if (input.Attack && !animController.IsBusy)
             {
+                if (enemyManager.enemies.Count != 0)
+                {
+                    transform.LookAt(enemyManager.Target.transform);
+                }
                 animController.AttackHaddler();
+
             }
         }
         private void CharacterSprint()
