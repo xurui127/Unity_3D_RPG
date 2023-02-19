@@ -27,7 +27,7 @@ public class PlayerAttackManager : MonoBehaviour
     {
         if ( co.TryGetComponent<Enemy>(out Enemy enemy)&& !enemies.Contains(enemy))
         {
-            Debug.Log("in");
+            
             enemies.Add(enemy); 
 
         }
@@ -40,8 +40,8 @@ public class PlayerAttackManager : MonoBehaviour
         }
     }
     
-    private void OnTriggerEnter(Collider co) => AddEnemyToList(co);
-    //private void OnTriggerStay(Collider co) => AddEnemyToList(co);
-    private void OnTriggerExit(Collider co) => RemoveEnemyToList(co);
+    //private void OnTriggerEnter(Collider co) => AddEnemyToList(co);
+    ////private void OnTriggerStay(Collider co) => AddEnemyToList(co);
+    //private void OnTriggerExit(Collider co) => RemoveEnemyToList(co);
     
 }

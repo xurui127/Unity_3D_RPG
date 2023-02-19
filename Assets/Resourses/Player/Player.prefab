@@ -1473,7 +1473,7 @@ GameObject:
   - component: {fileID: 811693682369752431}
   - component: {fileID: 954563144}
   - component: {fileID: 1994737101}
-  - component: {fileID: 1994737087}
+  - component: {fileID: 3275795212970028903}
   - component: {fileID: 1994737097}
   - component: {fileID: 1994737102}
   m_Layer: 0
@@ -1566,7 +1566,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1994737087
+--- !u!114 &3275795212970028903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1575,10 +1575,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5108295743068136594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 633ca6ad6b33e0745a4c017f54d80b4d, type: 3}
+  m_Script: {fileID: 11500000, guid: 09d6c9c1fb250ac4594f0945783c88c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comboCancletime: 0.438
+  comboCancletime: 0
 --- !u!114 &1994737097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1605,6 +1605,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmosSize: 1.76
+  enemies: []
+  target: {fileID: 0}
+  minDis: 2
 --- !u!1 &5266746997574743175
 GameObject:
   m_ObjectHideFlags: 0

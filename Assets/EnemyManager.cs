@@ -9,14 +9,20 @@ public class EnemyManager : MonoBehaviour
     Enemy target;
     float minDis = 2.5f;
     public Enemy Target => GetNearestTarget();
+
+    private void Start()
+    {
+        
+    }
     // Update is called once per frame
     void Update()
     {
         
     }
+    
     Enemy GetNearestTarget()
     {
-
+        Debug.Log("in");
         if (enemies.Count == 0)
         {
             return null;

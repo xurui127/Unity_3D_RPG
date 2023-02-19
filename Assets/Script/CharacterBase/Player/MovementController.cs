@@ -7,7 +7,7 @@ namespace Player
     {
         private PlayerInputSystem input;
         private CharacterController playerController;
-        private AnimController animController;
+        private PlayerAnimController animController;
         private PlayerAttackManager attackManager;
         private EnemyManager enemyManager;
         private float speed = 4f;
@@ -18,7 +18,7 @@ namespace Player
         void Start()
         {
             playerController = GetComponent<CharacterController>();
-            animController = GetComponent<AnimController>();
+            animController = GetComponent<PlayerAnimController>();
             input = GetComponent<PlayerInputSystem>();
             attackManager = GetComponent<PlayerAttackManager>();
             enemyManager= GetComponent<EnemyManager>();
@@ -66,10 +66,10 @@ namespace Player
         {
             if (input.Attack && !animController.IsBusy)
             {
-                if (enemyManager.enemies.Count != 0)
-                {
-                    transform.LookAt(enemyManager.Target.transform);
-                }
+                //if (enemyManager.enemies.Count != 0)
+                //{
+                //    transform.LookAt(enemyManager.Target.transform);
+                //}
                 animController.AttackHaddler();
 
             }
