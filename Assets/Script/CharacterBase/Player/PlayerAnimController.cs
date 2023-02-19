@@ -36,7 +36,7 @@ public class PlayerAnimController : AnimController
     private void Update()
     {
         ComboHaddler();
-        Debug.Log(attackPreAnimTxt + hitCount.ToString());
+        //Debug.Log(attackPreAnimTxt + hitCount.ToString());
     }
 
     #region Combo Anim Haddlers
@@ -50,7 +50,6 @@ public class PlayerAnimController : AnimController
         {
 
             hitCount++;
-            Debug.Log(hitCount);
             HitCounting.Invoke();
         }
         if (curAnimInfo.IsName(idleTxt) || curAnimInfo.IsName(rollTxt))

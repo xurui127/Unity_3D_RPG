@@ -7,7 +7,8 @@ public class EnemyManager : MonoBehaviour
 
     [SerializeField] public List<Enemy> enemies;
     Enemy target;
-    float minDis = 2.5f;
+    [SerializeField]float minDis = 2.5f;
+    [SerializeField] public GameObject player;
     public Enemy Target => GetNearestTarget();
 
     private void Start()
@@ -20,9 +21,9 @@ public class EnemyManager : MonoBehaviour
         
     }
     
-    Enemy GetNearestTarget()
+   public Enemy GetNearestTarget()
     {
-        Debug.Log("in");
+   
         if (enemies.Count == 0)
         {
             return null;
@@ -35,12 +36,14 @@ public class EnemyManager : MonoBehaviour
 
         foreach (var enemy in enemies)
         {
-            float distance = (enemy.transform.position - transform.position).sqrMagnitude;
+            //float distance = (enemy.transform.position - transform.position).sqrMagnitude;
+            float distance = (enemy.transform.position - player.transform.position).sqrMagnitude;
 
             if (distance <= minDis)
             {
                 //minDis = distance;
-              return  target = enemy;
+                Debug.Log(target);
+                return  target = enemy;
             }
         }
         return null;

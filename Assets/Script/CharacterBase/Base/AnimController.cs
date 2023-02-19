@@ -23,7 +23,7 @@ public class AnimController : MonoBehaviour
     void Update()
     {
 
-        // Debug.Log(attackPreAnimTxt + hitCount.ToString());
+        
     }
     #endregion
     #region Animations Function

@@ -9,7 +9,7 @@ namespace Player
         private CharacterController playerController;
         private PlayerAnimController animController;
         private PlayerAttackManager attackManager;
-        private EnemyManager enemyManager;
+       [SerializeField] private EnemyManager enemyManager;
         private float speed = 4f;
         #region System Function
 
@@ -21,7 +21,7 @@ namespace Player
             animController = GetComponent<PlayerAnimController>();
             input = GetComponent<PlayerInputSystem>();
             attackManager = GetComponent<PlayerAttackManager>();
-            enemyManager= GetComponent<EnemyManager>();
+            //enemyManager= GetComponent<EnemyManager>();
             input.EnableGamePlayInputs();
         }
 
@@ -66,10 +66,16 @@ namespace Player
         {
             if (input.Attack && !animController.IsBusy)
             {
-                //if (enemyManager.enemies.Count != 0)
-                //{
-                //    transform.LookAt(enemyManager.Target.transform);
-                //}
+                if (enemyManager.enemies.Count != 0)
+                {
+                    Enemy target = enemyManager.GetNearestTarget();
+                    Debug.Log(enemyManager.GetNearestTarget());
+                    if (target != null)
+                    {
+                       
+                    transform.LookAt(target.transform);
+                    }
+                }
                 animController.AttackHaddler();
 
             }
