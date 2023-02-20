@@ -36,9 +36,9 @@ namespace Player
         }
         #endregion
         #region Charactor Movement
-        private void CharacterMove()
+        private void Move()
         {
-            animController.SetAnimation("speed", input.moveValue.magnitude);
+            animController.OnMove(input.moveValue.magnitude);
             playerController.Move(input.moveValue * speed * Time.deltaTime);
         }
         private void CharacterRoatition()
@@ -49,7 +49,7 @@ namespace Player
         {
             if (input.Move && !animController.IsBusy)
             {
-                CharacterMove();
+                Move();
                 CharacterRoatition();
             }
 
@@ -69,14 +69,13 @@ namespace Player
                 if (enemyManager.enemies.Count != 0)
                 {
                     Enemy target = enemyManager.GetNearestTarget();
-                    Debug.Log(enemyManager.GetNearestTarget());
                     if (target != null)
                     {
                        
                     transform.LookAt(target.transform);
                     }
                 }
-                animController.AttackHaddler();
+                animController.OnAttack();
 
             }
         }

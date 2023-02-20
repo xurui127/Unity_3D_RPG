@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class SkeletonAnimController : AnimController
 {
-    private Animator anim;
+    public string moveTxt = "Locomotion";
+    public string attackTxt = "attacks";
 
     protected override void Start()
     {
         base.Start();
-        anim = GetComponent<Animator>();
     }
 
-    public void OnMove()
+    public override void OnMove(float speed)
+    {
+        SetAnimation(moveTxt,speed);
+    }
+
+    public override void OnAttack()
+    {
+        int randomAttack = Random.Range(1, 2);
+        SetAnimation(attackTxt + randomAttack);
+    }
+
+    protected override void Dead()
     {
         
     }

@@ -5,11 +5,13 @@ using UnityEngine.Events;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering.UI;
 
-public class AnimController : MonoBehaviour
+public abstract class AnimController : MonoBehaviour
 {
     protected Animator anim;
     protected AnimatorStateInfo curAnimInfo;
 
+
+    protected int attackCount = 1;
     #region System
 
     //Start is called before the first frame update
@@ -17,13 +19,6 @@ public class AnimController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        
     }
     #endregion
     #region Animations Function
@@ -37,5 +32,8 @@ public class AnimController : MonoBehaviour
     }
     #endregion
 
-    
+    public abstract  void OnMove(float speed);
+
+    public abstract void OnAttack();
+    protected abstract void Dead();
 }

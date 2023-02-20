@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using SO_PlayerPreTxt;
 
 public class PlayerAnimController : AnimController
 {
-    int hitCount = 1;
-    private string attackPreAnimTxt = "SwordAndShield_Combo0";
-    private string rollPreAnimTxt = "Roll_Battle_SwordAndShield";
-    private string attackPreTxt = "attack ";
-    private string idleTxt = "Locomotion";
-    private string rollTxt = "roll";
-    private string sprintTxt = "sprint";
-    string[] preTxt = { "Locomotion", "SwordAndShield_Combo01", "SwordAndShield_Combo02", "SwordAndShield_Combo03" };
-    private bool isBusy => (!curAnimInfo.IsName(preTxt[0]) ? true : false);
+
+    [SerializeField] private PlayerAnimPreTxt_SO animpPreTxts;
+    [Range(0f, 1f)]
+    [SerializeField] private float comboCancletime;
+
+
+    private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
     public bool IsBusy => isBusy;
     private UnityEvent HitCounting;
     private UnityEvent CheckLastAnim;
-    [Range(0f, 1f)]
-    [SerializeField] private float comboCancletime;
+  
 
     protected override void Start()
     {
         base.Start();
+       // animpPreTxts = new PlayerAnimPreTxt_SO();
         if (HitCounting == null)
         {
             HitCounting = new UnityEvent();
@@ -46,17 +45,17 @@ public class PlayerAnimController : AnimController
         curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
 
 
-        if (curAnimInfo.IsName(attackPreAnimTxt + hitCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
+        if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
         {
 
-            hitCount++;
+            attackCount++;
             HitCounting.Invoke();
         }
-        if (curAnimInfo.IsName(idleTxt) || curAnimInfo.IsName(rollTxt))
+        if (curAnimInfo.IsName(animpPreTxts.idleTxt) || curAnimInfo.IsName(animpPreTxts.rollTxt))
         {
             if (curAnimInfo.normalizedTime >= comboCancletime)
             {
-                hitCount = 1;
+                attackCount = 1;
             }
         }
 
@@ -64,27 +63,37 @@ public class PlayerAnimController : AnimController
     }
     private void CheckHitCount()
     {
-        if (hitCount > 3)
+        if (attackCount > 3)
         {
-            hitCount = 1;
+            attackCount = 1;
         }
     }
 
-    public void AttackHaddler()
-    {
-        SetAnimation(attackPreTxt + hitCount.ToString());
-    }
+
     #endregion
-    #region Action Haddlers 
+    #region Behaviours Haddlers 
+    public override void OnMove(float speed)
+    {
+        SetAnimation(animpPreTxts.moveTxt, speed);
+    }
+    public override void OnAttack()
+    {
+        SetAnimation(animpPreTxts.attackTxt + attackCount.ToString());
+    }
     public void RollHaddler()
     {
 
-        SetAnimation(rollTxt);
+        SetAnimation(animpPreTxts.rollTxt);
 
     }
     public void SprintHaddler()
     {
-        SetAnimation(sprintTxt);
+        SetAnimation(animpPreTxts.sprintTxt);
+    }
+
+    protected override void Dead()
+    {
+       
     }
     #endregion
 }

@@ -622,10 +622,10 @@ Transform:
   m_Children:
   - {fileID: 1023787393}
   - {fileID: 210064459}
+  - {fileID: 1474208814}
   - {fileID: 954563140}
   - {fileID: 1620417011}
   - {fileID: 1428647427}
-  - {fileID: 1474208814}
   - {fileID: 1107924665}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1097,7 +1097,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 719840281}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1610335760
 PrefabInstance:
@@ -1128,8 +1128,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3275795212970028903, guid: ae0f72cb14403f34d85a0a62b29ef772,
         type: 3}
+      propertyPath: animpPreTxts
+      value: 
+      objectReference: {fileID: 11400000, guid: 68ac0832d068f884087c5d9ac0c1951e,
+        type: 2}
+    - target: {fileID: 3275795212970028903, guid: ae0f72cb14403f34d85a0a62b29ef772,
+        type: 3}
       propertyPath: comboCancletime
-      value: 0.3
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 5108295743068136594, guid: ae0f72cb14403f34d85a0a62b29ef772,
         type: 3}
@@ -1280,9 +1286,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   board:
-    animator: {fileID: 0}
-    agent: {fileID: 0}
-    target: {fileID: 0}
+    animator: {fileID: 1620417014}
+    agent: {fileID: 1620417005}
+    target: {fileID: 1620417002}
+--- !u!114 &1620417014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620417002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81eff3be5a35c245b4d90337e2b91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveTxt: Locomotion
+  attackTxt: Attacks
 --- !u!1 &1621792435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1088474434442572, guid: ebf2cc118768d314988702254deb07a7,
