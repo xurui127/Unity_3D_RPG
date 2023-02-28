@@ -1285,6 +1285,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae677007e55dbb46b4dc448098b8c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  board:
+    agent: {fileID: 1620417005}
+    target: {fileID: 1656994520}
+    anim: {fileID: 1620417014}
 --- !u!114 &1620417014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1298,6 +1302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveTxt: Locomotion
+  move: speed
   attackTxt: Attacks
 --- !u!1 &1621792435 stripped
 GameObject:

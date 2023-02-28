@@ -13,8 +13,8 @@ public class AI_Skeleton : MonoBehaviour
     {
         fsm_Skeleton = new FSM_Enemy();
         fsm_Skeleton.Init(board);
-        fsm_Skeleton.AddState(StateType.IDLE, new IdleState(board));
-        fsm_Skeleton.AddState(StateType.MOVE, new MoveState(board));
+        fsm_Skeleton.AddState(StateType.IDLE, new IdleState_Skeleton<BB_Skeleton>(board));
+        fsm_Skeleton.AddState(StateType.MOVE, new MoveState_Skeleton<BB_Skeleton>(board));
         fsm_Skeleton.SwitchState(StateType.IDLE,fsm_Skeleton,board);
     }
 

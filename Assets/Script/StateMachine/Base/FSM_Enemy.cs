@@ -45,15 +45,15 @@ namespace AI_Enemy
             }
             if(curState != null)
             {
-                curState.OnExit(fSM_Enemy,board);
+                curState.OnExit(fSM_Enemy);
             }
             curState = states[stateType];
-            curState.OnEnter(fSM_Enemy,board);
+            curState.OnEnter(fSM_Enemy);
         }
 
         public void OnUpdate(FSM_Enemy fSM_Enemy,BlackBoard board)
         {
-            curState.OnUpdate(fSM_Enemy,board);
+            curState.OnUpdate(fSM_Enemy);
         }
         
     }

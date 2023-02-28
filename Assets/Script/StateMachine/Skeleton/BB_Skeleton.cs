@@ -7,5 +7,5 @@ using System;
 [Serializable]
 public class BB_Skeleton : BlackBoard
 {
-    
+    public SkeletonAnimController anim;
 }
