@@ -42,7 +42,7 @@ public class EnemyManager : MonoBehaviour
             if (distance <= minDis)
             {
                 //minDis = distance;
-                Debug.Log(target);
+                //Debug.Log(target);
                 return  target = enemy;
             }
         }

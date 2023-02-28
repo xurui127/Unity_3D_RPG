@@ -32,4 +32,5 @@ public class IdleState_Skeleton<T> : IState where T : BB_Skeleton
             fSM_Enemy.SwitchState(StateType.MOVE, fSM_Enemy,board);
         }
     }
+
 }

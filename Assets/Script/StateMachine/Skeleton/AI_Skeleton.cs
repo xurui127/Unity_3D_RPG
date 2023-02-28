@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AI_Enemy;
 using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
 
 public class AI_Skeleton : MonoBehaviour
 {
@@ -22,5 +23,12 @@ public class AI_Skeleton : MonoBehaviour
     void Update()
     {
         fsm_Skeleton.OnUpdate(fsm_Skeleton,board);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            Debug.Log("Hit");
+        }
     }
 }

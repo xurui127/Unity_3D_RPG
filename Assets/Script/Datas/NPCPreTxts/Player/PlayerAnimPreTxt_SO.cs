@@ -1,8 +1,10 @@
 
+using UnityEditor;
 using UnityEngine;
 
 namespace SO_PlayerPreTxt
 {
+    
     [CreateAssetMenu(fileName = "PlayerPreTxt", menuName = "Player/PlayerPreTxt", order = 1)]
     public class PlayerAnimPreTxt_SO : ScriptableObject
     {
