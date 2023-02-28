@@ -20,10 +20,6 @@ namespace AI_Enemy
         public Dictionary<StateType, IState> states;
         public BlackBoard board;
         public FSM_Enemy fSM;
-        public FSM_Enemy()
-        {
-
-        }
         public void Init(BlackBoard board)
         {
  
@@ -40,7 +36,7 @@ namespace AI_Enemy
             states.Add(stateType, state);
         }
 
-        public void SwitchState(StateType stateType , FSM_Enemy fSM_Enemy)
+        public void SwitchState(StateType stateType , FSM_Enemy fSM_Enemy,BlackBoard board)
         {
             if (!states.ContainsKey(stateType))
             {
@@ -49,15 +45,15 @@ namespace AI_Enemy
             }
             if(curState != null)
             {
-                curState.OnExit(fSM_Enemy);
+                curState.OnExit(fSM_Enemy,board);
             }
             curState = states[stateType];
-            curState.OnEnter(fSM_Enemy);
+            curState.OnEnter(fSM_Enemy,board);
         }
 
-        public void OnUpdate(FSM_Enemy fSM_Enemy)
+        public void OnUpdate(FSM_Enemy fSM_Enemy,BlackBoard board)
         {
-            curState.OnUpdate(fSM_Enemy);
+            curState.OnUpdate(fSM_Enemy,board);
         }
         
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkeletonAnimController : AnimController
 {
     public string moveTxt = "Locomotion";
+    public string move = "speed";
     public string attackTxt = "attacks";
 
     protected override void Start()
@@ -14,7 +15,7 @@ public class SkeletonAnimController : AnimController
 
     public override void OnMove(float speed)
     {
-        SetAnimation(moveTxt,speed);
+        SetAnimation(move, speed);
     }
 
     public override void OnAttack()
