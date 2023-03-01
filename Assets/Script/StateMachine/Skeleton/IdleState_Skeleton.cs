@@ -17,7 +17,7 @@ public class IdleState_Skeleton<T> : IState where T : BB_Skeleton
 
     public void OnEnter(FSM_Enemy fSM_Enemy)
     {
-        Debug.Log("Idle");
+     
     }
 
     public void OnExit(FSM_Enemy fSM_Enemy)

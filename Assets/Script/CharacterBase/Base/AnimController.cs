@@ -36,4 +36,7 @@ public abstract class AnimController : MonoBehaviour
 
     public abstract void OnAttack();
     protected abstract void Dead();
+    public abstract void GetHit();
+   
+
 }

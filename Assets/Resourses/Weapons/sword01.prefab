@@ -9728,6 +9728,7 @@ GameObject:
   - component: {fileID: 9120660206617292004}
   - component: {fileID: 6446884637102184494}
   - component: {fileID: 1256086438733995383}
+  - component: {fileID: 2746674328086307910}
   m_Layer: 0
   m_Name: sword01
   m_TagString: Weapon
@@ -9814,6 +9815,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5305424, y: 1.2362287, z: 0.23689568}
   m_Center: {x: -0.0000075811654, y: 0.81074685, z: -0.0021887054}
+--- !u!114 &2746674328086307910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789317738248649211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04991f4fb43a9b14599f082eb6706ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCollider: {fileID: 288420933495450423}
 --- !u!1 &7304997062703951092
 GameObject:
   m_ObjectHideFlags: 0

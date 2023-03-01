@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using SO_PlayerPreTxt;
+using Unity.VisualScripting;
+using Utility;
 
 public class PlayerAnimController : AnimController
 {
@@ -10,6 +12,9 @@ public class PlayerAnimController : AnimController
     [SerializeField] private PlayerAnimPreTxt_SO animpPreTxts;
     [Range(0f, 1f)]
     [SerializeField] private float comboCancletime;
+    private GameObject weapon;
+    private WeaponHaddler curWeapon;
+   
 
 
     private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
@@ -30,6 +35,11 @@ public class PlayerAnimController : AnimController
         if (CheckLastAnim == null)
         {
             CheckLastAnim = new UnityEvent();
+        }
+        weapon = GameObjectFinder.FindChild(this.gameObject, "sword01");
+        if(weapon != null)
+        {
+            curWeapon = weapon.GetComponent<WeaponHaddler>();
         }
     }
     private void Update()
@@ -90,10 +100,18 @@ public class PlayerAnimController : AnimController
     {
         SetAnimation(animpPreTxts.sprintTxt);
     }
-
+    public override void GetHit()
+    {
+       
+    }
     protected override void Dead()
     {
        
+    }
+    
+    public void StartColldier()
+    {
+        curWeapon.StartCollider.Invoke();
     }
     #endregion
 }

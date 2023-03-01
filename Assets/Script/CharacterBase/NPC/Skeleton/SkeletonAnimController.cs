@@ -23,7 +23,10 @@ public class SkeletonAnimController : AnimController
         int randomAttack = Random.Range(1, 2);
         SetAnimation(attackTxt + randomAttack);
     }
-
+    public override void GetHit()
+    {
+        SetAnimation("gethit"); 
+    }
     protected override void Dead()
     {
         

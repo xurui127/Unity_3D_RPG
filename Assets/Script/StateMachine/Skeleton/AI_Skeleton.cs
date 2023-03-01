@@ -24,11 +24,5 @@ public class AI_Skeleton : MonoBehaviour
     {
         fsm_Skeleton.OnUpdate(fsm_Skeleton,board);
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Weapon"))
-        {
-            Debug.Log("Hit");
-        }
-    }
+
 }
