@@ -1472,7 +1472,6 @@ GameObject:
   - component: {fileID: 5342718556756314994}
   - component: {fileID: 811693682369752431}
   - component: {fileID: 1994737101}
-  - component: {fileID: 954563144}
   - component: {fileID: 1298038066026534843}
   - component: {fileID: 3275795212970028903}
   - component: {fileID: 1994737097}
@@ -1555,24 +1554,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &954563144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108295743068136594}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50d61d2f6b382247ae4f5515cd9f14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  playerController: {fileID: 0}
-  animController: {fileID: 0}
-  attackManager: {fileID: 0}
-  enemyManager: {fileID: 0}
-  speed: 4
 --- !u!114 &1298038066026534843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,11 +1566,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b10ba0d8c1456a438fd1221a5d1a53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 0}
-  playerController: {fileID: 0}
-  animController: {fileID: 0}
-  attackManager: {fileID: 0}
-  enemyManager: {fileID: 0}
+  board:
+    transform: {fileID: 0}
+    input: {fileID: 0}
+    playerController: {fileID: 0}
+    animController: {fileID: 0}
+    attackManager: {fileID: 0}
+    moveSpeed: 0
 --- !u!114 &3275795212970028903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2833,12 +2816,22 @@ PrefabInstance:
     - target: {fileID: 1256086438733995383, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4789317738248649211, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
         type: 3}
       propertyPath: m_Name
       value: sword01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244278266995824321, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244278266995824321, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5277308054964659009, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
         type: 3}
@@ -2938,9 +2931,10 @@ PrefabInstance:
     - target: {fileID: 7946831815657597611, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
         type: 3}
       propertyPath: m_Name
-      value: Splash
+      value: SwordSplash
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 288420933495450423, guid: e3a47310cd0f36947ad7f9345fc1b7bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3a47310cd0f36947ad7f9345fc1b7bf, type: 3}
 --- !u!4 &6364219872603677992 stripped
 Transform:

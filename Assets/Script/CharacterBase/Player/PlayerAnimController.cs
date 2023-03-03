@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using SO_PlayerPreTxt;
 using Unity.VisualScripting;
 using Utility;
+using Unity.PlasticSCM.Editor.WebApi;
+using UnityEditor.Build;
 
 public class PlayerAnimController : AnimController
 {
@@ -53,11 +55,16 @@ public class PlayerAnimController : AnimController
     {
 
         curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
-
-
+        if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString())&& curAnimInfo.normalizedTime < 1f)
+        {
+                curWeapon.EnableVFX();
+        }
+        if (LastAnimInfo.normalizedTime >= 1f)
+        {
+            curWeapon.DisableVFX();
+        }
         if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
         {
-
             attackCount++;
             HitCounting.Invoke();
         }
@@ -68,8 +75,7 @@ public class PlayerAnimController : AnimController
                 attackCount = 1;
             }
         }
-
-
+        lastAnimInfo = curAnimInfo;
     }
     private void CheckHitCount()
     {
@@ -108,7 +114,6 @@ public class PlayerAnimController : AnimController
     {
        
     }
-    
     public void StartColldier()
     {
         curWeapon.StartCollider.Invoke();

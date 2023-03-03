@@ -6,19 +6,22 @@ namespace NPC_Player
     [Serializable]
     public class BB_Player
     {
+        public Transform transform;
         public PlayerInputSystem input;
         public CharacterController playerController;
         public PlayerAnimController animController;
         public PlayerAttackManager attackManager;
-        public Transform transform;
 
-        public BB_Player(PlayerInputSystem input, CharacterController playerController, PlayerAnimController animController, PlayerAttackManager attackManager, Transform transform)
+        public float moveSpeed;
+
+        public BB_Player(Transform transform,PlayerInputSystem input, CharacterController playerController, PlayerAnimController animController, PlayerAttackManager attackManager, float moveSpeed)
         {
+            this.transform = transform;
             this.input = input;
             this.playerController = playerController;
             this.animController = animController;
             this.attackManager = attackManager;
-            this.transform = transform;
+            this.moveSpeed = moveSpeed;
         }
     }
 }

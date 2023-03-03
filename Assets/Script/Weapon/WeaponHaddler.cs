@@ -7,22 +7,30 @@ using UnityEngine.Rendering.Universal;
 
 public class WeaponHaddler : MonoBehaviour
 {
-    
-    private Collider collider;
+
+    public Collider collider;
     private float colliderWaitingTime = 0.1f;
     [HideInInspector]
-    public UnityEvent StartCollider;
+    public UnityEvent StartCollider = new UnityEvent();
+    public GameObject swordVFX;
     public void Start()
     {
-       
+
         collider = GetComponent<BoxCollider>();
-        if (StartCollider == null)
+        if (StartCollider != null)
         {
-            StartCollider = new UnityEvent();
+            StartCollider.AddListener(OnColliderStart);
         }
-        StartCollider.AddListener(OnColliderStart);
     }
 
+    public void EnableVFX()
+    {
+        swordVFX.SetActive(true);
+    }
+    public void DisableVFX()
+    {
+        swordVFX.SetActive(false);
+    }
     public void OnAnimStart()
     {
 
@@ -39,7 +47,7 @@ public class WeaponHaddler : MonoBehaviour
         collider.enabled = false;
         yield return null;
     }
-    public  void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         //Debug.Log("in");
         collider.enabled = false;
@@ -49,7 +57,7 @@ public class WeaponHaddler : MonoBehaviour
         //    {
         //        var target = col.GetComponentInParent<AnimController>();
         //        target.GetHit();
-                
+
         //    }
         //}
     }

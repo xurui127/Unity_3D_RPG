@@ -12,6 +12,10 @@ public abstract class AnimController : MonoBehaviour
     public AnimatorStateInfo curAnimInfo;
     public AnimatorStateInfo CurAnimInfo { get { return curAnimInfo; } set => curAnimInfo = value; }
 
+    public AnimatorStateInfo lastAnimInfo;
+    public AnimatorStateInfo LastAnimInfo { get => lastAnimInfo; set => lastAnimInfo = value; }
+
+
     protected int attackCount = 1;
     #region System
 

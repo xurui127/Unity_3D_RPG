@@ -910,6 +910,12 @@ Transform:
   m_Father: {fileID: 931820968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1146260660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9162101308469341378, guid: ae0f72cb14403f34d85a0a62b29ef772,
+    type: 3}
+  m_PrefabInstance: {fileID: 1610335760}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1197395439
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,19 +1142,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 719840281}
     m_Modifications:
-    - target: {fileID: 954563144, guid: ae0f72cb14403f34d85a0a62b29ef772, type: 3}
-      propertyPath: enemyManager
-      value: 
-      objectReference: {fileID: 1107924666}
-    - target: {fileID: 2056461086, guid: ae0f72cb14403f34d85a0a62b29ef772, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1544223098360278366, guid: ae0f72cb14403f34d85a0a62b29ef772,
+    - target: {fileID: 3994875705400435247, guid: ae0f72cb14403f34d85a0a62b29ef772,
         type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: swordVFX
+      value: 
+      objectReference: {fileID: 1146260660}
     - target: {fileID: 5108295743068136594, guid: ae0f72cb14403f34d85a0a62b29ef772,
         type: 3}
       propertyPath: m_Name
@@ -1209,18 +1207,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6460951026519871656, guid: ae0f72cb14403f34d85a0a62b29ef772,
+    - target: {fileID: 9162101308469341378, guid: ae0f72cb14403f34d85a0a62b29ef772,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.14
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6460951026519871656, guid: ae0f72cb14403f34d85a0a62b29ef772,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1544223098360278366, guid: ae0f72cb14403f34d85a0a62b29ef772, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae0f72cb14403f34d85a0a62b29ef772, type: 3}
 --- !u!114 &1620417009 stripped
 MonoBehaviour:

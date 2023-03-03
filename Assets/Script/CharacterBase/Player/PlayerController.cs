@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private EnemyManager enemyManager;
     //public float speed = 4f;
     
+
+    // Player movement actions 
     public BB_Player board;
     private readonly Move move = new Move();
     private readonly Rotation rotation = new Rotation();
@@ -29,10 +31,11 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<PlayerInputSystem>();
         attackManager = GetComponent<PlayerAttackManager>();
         input.EnableGamePlayInputs();
-        board = new BB_Player(input,playerController,
+        board = new BB_Player(this.transform,
+                              input, playerController,
                               animController,
                               attackManager,
-                              this.transform);
+                              4.0f);
     }
 
     // Update is called once per frame
