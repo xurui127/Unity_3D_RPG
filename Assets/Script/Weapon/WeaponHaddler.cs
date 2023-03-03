@@ -29,7 +29,7 @@ public class WeaponHaddler : MonoBehaviour
     }
     public void OnColliderStart()
     {
-       StopAllCoroutines();
+        StopAllCoroutines();
         StartCoroutine(ColliderControl());
     }
     private IEnumerator ColliderControl()
@@ -39,19 +39,19 @@ public class WeaponHaddler : MonoBehaviour
         collider.enabled = false;
         yield return null;
     }
-    private void OnTriggerEnter(Collider other)
+    public  void OnTriggerEnter(Collider other)
     {
-        Debug.Log("in");
+        //Debug.Log("in");
         collider.enabled = false;
-        foreach (var col in other.GetComponentsInChildren<Collider>())
-        {
-            if (col.gameObject.tag == "EnemyDamagable")
-            {
-                var target = col.GetComponentInParent<AnimController>();
-                target.GetHit();
+        //foreach (var col in other.GetComponentsInChildren<Collider>())
+        //{
+        //    if (col.gameObject.tag == "EnemyDamagable")
+        //    {
+        //        var target = col.GetComponentInParent<AnimController>();
+        //        target.GetHit();
                 
-            }
-        }
+        //    }
+        //}
     }
 
 }

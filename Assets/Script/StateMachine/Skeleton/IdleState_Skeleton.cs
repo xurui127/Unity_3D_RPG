@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AI_Enemy;
+using UnityEngine.Rendering.Universal;
 
 public class IdleState_Skeleton<T> : IState where T : BB_Skeleton
 {
@@ -17,7 +18,7 @@ public class IdleState_Skeleton<T> : IState where T : BB_Skeleton
 
     public void OnEnter(FSM_Enemy fSM_Enemy)
     {
-     
+        Debug.Log("In Idle");
     }
 
     public void OnExit(FSM_Enemy fSM_Enemy)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,11 @@ namespace AI_Enemy
         IDLE,
         MOVE,
         ATTACK,
+        HIT,
         TUANT,
         DEAD,
     }
+    [Serializable]
     public class FSM_Enemy
     {
         public IState curState;
@@ -53,6 +56,7 @@ namespace AI_Enemy
 
         public void OnUpdate(FSM_Enemy fSM_Enemy,BlackBoard board)
         {
+            curState.OnCheck(fSM_Enemy);
             curState.OnUpdate(fSM_Enemy);
         }
         

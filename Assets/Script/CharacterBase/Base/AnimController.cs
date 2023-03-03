@@ -8,8 +8,9 @@ using UnityEngine.Rendering.UI;
 public abstract class AnimController : MonoBehaviour
 {
     protected Animator anim;
-    protected AnimatorStateInfo curAnimInfo;
-
+    public Animator animIns { get { return anim; } }
+    public AnimatorStateInfo curAnimInfo;
+    public AnimatorStateInfo CurAnimInfo { get { return curAnimInfo; } set => curAnimInfo = value; }
 
     protected int attackCount = 1;
     #region System
@@ -22,11 +23,11 @@ public abstract class AnimController : MonoBehaviour
     }
     #endregion
     #region Animations Function
-    public void SetAnimation(string paraName)
+    protected void SetAnimation(string paraName)
     {
         anim.SetTrigger(paraName);
     }
-    public void SetAnimation(string paraName, float para)
+    protected void SetAnimation(string paraName, float para)
     {
         anim.SetFloat(paraName, para);
     }

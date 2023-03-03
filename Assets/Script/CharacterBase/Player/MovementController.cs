@@ -9,7 +9,7 @@ namespace Player
         private CharacterController playerController;
         private PlayerAnimController animController;
         private PlayerAttackManager attackManager;
-       [SerializeField] private EnemyManager enemyManager;
+        [SerializeField] private EnemyManager enemyManager;
         private float speed = 4f;
         #region System Function
 

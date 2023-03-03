@@ -9,7 +9,7 @@ namespace AI_Enemy
     [Serializable]
     public class BlackBoard
     {
-        //public  AnimController anim;
+        public Animator anim;
         public  NavMeshAgent agent;
         public  GameObject target;
     }

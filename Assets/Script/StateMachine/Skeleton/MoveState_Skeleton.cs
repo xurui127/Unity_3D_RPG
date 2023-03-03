@@ -19,7 +19,7 @@ public class MoveState_Skeleton<T> : IState where T : BB_Skeleton
         Debug.Log("In Move");
         //fSM_Enemy.board.agent.SetDestination(fSM_Enemy.board.target.transform.position);
         this.board.agent.SetDestination(board.target.transform.position);
-        this.board.anim.OnMove(1.0f);
+        this.board.animController.OnMove(1.0f);
        
     }
 

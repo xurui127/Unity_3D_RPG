@@ -691,9 +691,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1620417012, guid: ebf2cc118768d314988702254deb07a7, type: 3}
+      propertyPath: board.anim
+      value: 
+      objectReference: {fileID: 1620417027}
+    - target: {fileID: 1620417012, guid: ebf2cc118768d314988702254deb07a7, type: 3}
       propertyPath: board.target
       value: 
       objectReference: {fileID: 1656994520}
+    - target: {fileID: 1620417012, guid: ebf2cc118768d314988702254deb07a7, type: 3}
+      propertyPath: board.animController
+      value: 
+      objectReference: {fileID: 1620417022}
     - target: {fileID: 1088474434442572, guid: ebf2cc118768d314988702254deb07a7, type: 3}
       propertyPath: m_Name
       value: SkeletonPBR
@@ -1007,6 +1015,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 719840281}
     m_Modifications:
+    - target: {fileID: 1620417012, guid: ebf2cc118768d314988702254deb07a7, type: 3}
+      propertyPath: board.anim
+      value: 
+      objectReference: {fileID: 1621792446}
+    - target: {fileID: 1620417012, guid: ebf2cc118768d314988702254deb07a7, type: 3}
+      propertyPath: board.target
+      value: 
+      objectReference: {fileID: 1656994520}
+    - target: {fileID: 1620417012, guid: ebf2cc118768d314988702254deb07a7, type: 3}
+      propertyPath: board.animController
+      value: 
+      objectReference: {fileID: 1621792441}
     - target: {fileID: 1088474434442572, guid: ebf2cc118768d314988702254deb07a7, type: 3}
       propertyPath: m_Name
       value: SkeletonPBR (1)
@@ -1189,6 +1209,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6460951026519871656, guid: ae0f72cb14403f34d85a0a62b29ef772,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460951026519871656, guid: ae0f72cb14403f34d85a0a62b29ef772,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1544223098360278366, guid: ae0f72cb14403f34d85a0a62b29ef772, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ae0f72cb14403f34d85a0a62b29ef772, type: 3}
@@ -1226,6 +1256,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &1620417022 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620417014, guid: ebf2cc118768d314988702254deb07a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 856818738}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584820647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81eff3be5a35c245b4d90337e2b91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1620417027 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95570523499675550, guid: ebf2cc118768d314988702254deb07a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 856818738}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1621792435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1088474434442572, guid: ebf2cc118768d314988702254deb07a7,
@@ -1294,6 +1342,24 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.87, z: 0}
+--- !u!114 &1621792441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1620417014, guid: ebf2cc118768d314988702254deb07a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1428647426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621792435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b81eff3be5a35c245b4d90337e2b91c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &1621792446 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95570523499675550, guid: ebf2cc118768d314988702254deb07a7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1428647426}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1656994520 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5108295743068136594, guid: ae0f72cb14403f34d85a0a62b29ef772,
