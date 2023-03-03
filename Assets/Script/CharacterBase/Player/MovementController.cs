@@ -5,12 +5,12 @@ namespace Player
 {
     public class MovementController : MonoBehaviour
     {
-        private PlayerInputSystem input;
-        private CharacterController playerController;
-        private PlayerAnimController animController;
-        private PlayerAttackManager attackManager;
+        public PlayerInputSystem input;
+        public CharacterController playerController;
+        public PlayerAnimController animController;
+        public PlayerAttackManager attackManager;
         [SerializeField] private EnemyManager enemyManager;
-        private float speed = 4f;
+        public float speed = 4f;
         #region System Function
 
 

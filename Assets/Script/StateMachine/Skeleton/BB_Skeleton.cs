@@ -10,6 +10,4 @@ using UnityEngine.UI;
 public class BB_Skeleton : BlackBoard
 {
     public SkeletonAnimController animController;
-
-
 }

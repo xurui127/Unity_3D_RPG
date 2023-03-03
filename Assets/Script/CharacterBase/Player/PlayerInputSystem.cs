@@ -17,9 +17,6 @@ public class PlayerInputSystem : MonoBehaviour
 
     public bool Sprint => playerInputActions.GamePlay.Sprint.WasPressedThisFrame();
 
-
-    //public bool Move => axes.x != 0 || axes.y != 0;
-   // public bool Move =>playerInputActions.GamePlay.Move.WasPressedThisFrame();
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();   

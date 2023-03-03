@@ -1471,8 +1471,9 @@ GameObject:
   - component: {fileID: 5597867981880639016}
   - component: {fileID: 5342718556756314994}
   - component: {fileID: 811693682369752431}
-  - component: {fileID: 954563144}
   - component: {fileID: 1994737101}
+  - component: {fileID: 954563144}
+  - component: {fileID: 1298038066026534843}
   - component: {fileID: 3275795212970028903}
   - component: {fileID: 1994737097}
   - component: {fileID: 1994737102}
@@ -1541,19 +1542,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.77, z: 0}
---- !u!114 &954563144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108295743068136594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50d61d2f6b382247ae4f5515cd9f14a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyManager: {fileID: 0}
 --- !u!135 &1994737101
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1567,6 +1555,41 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &954563144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108295743068136594}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50d61d2f6b382247ae4f5515cd9f14a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  playerController: {fileID: 0}
+  animController: {fileID: 0}
+  attackManager: {fileID: 0}
+  enemyManager: {fileID: 0}
+  speed: 4
+--- !u!114 &1298038066026534843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108295743068136594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b10ba0d8c1456a438fd1221a5d1a53c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 0}
+  playerController: {fileID: 0}
+  animController: {fileID: 0}
+  attackManager: {fileID: 0}
+  enemyManager: {fileID: 0}
 --- !u!114 &3275795212970028903
 MonoBehaviour:
   m_ObjectHideFlags: 0
