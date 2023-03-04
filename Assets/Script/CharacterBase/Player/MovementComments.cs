@@ -20,9 +20,6 @@ public class Rotation : Commend
 }
 public class Roll : Commend
 {
-
-
-
     public override void Execute(BB_Player board)
     {
         board.animController.RollHaddler();
@@ -31,7 +28,6 @@ public class Roll : Commend
 
 public class Attack : Commend
 {
-
     public override void Execute(BB_Player board)
     {
         board.animController.OnAttack();

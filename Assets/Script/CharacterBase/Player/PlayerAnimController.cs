@@ -57,7 +57,7 @@ public class PlayerAnimController : AnimController
         curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
         if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString())&& curAnimInfo.normalizedTime < 1f)
         {
-                curWeapon.EnableVFX();
+            curWeapon.EnableVFX();
         }
         if (LastAnimInfo.normalizedTime >= 1f)
         {
@@ -119,4 +119,5 @@ public class PlayerAnimController : AnimController
         curWeapon.StartCollider.Invoke();
     }
     #endregion
+
 }
