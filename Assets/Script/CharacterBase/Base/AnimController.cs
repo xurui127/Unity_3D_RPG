@@ -17,7 +17,7 @@ public abstract class AnimController : MonoBehaviour
     public AnimatorStateInfo lastAnimInfo;
     public AnimatorStateInfo LastAnimInfo { get => lastAnimInfo; set => lastAnimInfo = value; }
     
-    public delegate void NotifyBegin();
+    //public delegate void NotifyBegin();
 
     protected int attackCount = 1;
     #region System
@@ -43,7 +43,6 @@ public abstract class AnimController : MonoBehaviour
 
     }
     #endregion
-
     public abstract  void OnMove(float speed);
 
     public abstract void OnAttack();

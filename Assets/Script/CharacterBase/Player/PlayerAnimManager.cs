@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimManager : MonoBehaviour
+public class PlayerAnimManager : IObserber
 {
-    private void Update()
+    public void OnNoyity()
     {
         
     }
 
+    private void Update()
+    {
+        
+    }
 }
