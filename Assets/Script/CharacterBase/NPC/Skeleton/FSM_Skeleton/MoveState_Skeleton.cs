@@ -16,7 +16,7 @@ public class MoveState_Skeleton<T> : IState where T : BB_Skeleton
 
     public void OnEnter(FSM_Enemy fSM_Enemy)
     {
-        Debug.Log("In Move");
+        //Debug.Log("In Move");
         //fSM_Enemy.board.agent.SetDestination(fSM_Enemy.board.target.transform.position);
         this.board.agent.SetDestination(board.target.transform.position);
         this.board.animController.OnMove(1.0f);

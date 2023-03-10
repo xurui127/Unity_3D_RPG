@@ -33,7 +33,7 @@ public class HitState_Skeleton<T> : IState where T : BB_Skeleton
         board.animController.CurAnimInfo.IsName("GetHit");
         if (board.animController.CurAnimInfo.normalizedTime >= 0.95f)
         {
-            Debug.Log("Out Hit");
+         
             fSM_Enemy.SwitchState(StateType.MOVE, fSM_Enemy, board);
         }
     }

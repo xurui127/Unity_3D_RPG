@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using static ActionData;
 
-interface IObserber 
+public interface IObserber 
 {
-    public void OnNoyity();
+    public void OnNotify();
 }

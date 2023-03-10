@@ -1,22 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-public class Singleton<T> : MonoBehaviour where T : Singleton<T>
+public abstract class Singleton<T> : MonoBehaviour where T : Singleton<T>
 {
-    private static T instance;
+    protected static T instance;
 
     public static T Instance { get { return instance; } }
+    protected bool shouldDestroy = true;
     protected virtual void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = (T)this;
-        }
+       
     }
 
     public static bool IsInitialize
@@ -31,6 +26,24 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
             instance = null;
         }
     }
-
-
+    public static T GetInstance()
+    {
+        return instance;
+    }
+    protected void Init()
+    {
+      
+        if (instance != null && instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = (T)this;
+            if (shouldDestroy)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+        }
+    }
 }

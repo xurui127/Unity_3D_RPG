@@ -1474,7 +1474,6 @@ GameObject:
   - component: {fileID: 1994737101}
   - component: {fileID: 1994737097}
   - component: {fileID: 1298038066026534843}
-  - component: {fileID: 2524786922042308608}
   - component: {fileID: 3275795212970028903}
   - component: {fileID: 1994737102}
   m_Layer: 0
@@ -1587,18 +1586,6 @@ MonoBehaviour:
     animController: {fileID: 0}
     attackManager: {fileID: 0}
     moveSpeed: 0
---- !u!114 &2524786922042308608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108295743068136594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1a57841672e6e44c9ff37b444925ea8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3275795212970028903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2831,6 +2818,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2746674328086307910, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+        type: 3}
+      propertyPath: swordVFX
+      value: 
+      objectReference: {fileID: 9162101308469341378}
     - target: {fileID: 4789317738248649211, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
         type: 3}
       propertyPath: m_Name
@@ -2946,12 +2938,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: SwordSplash
       objectReference: {fileID: 0}
+    - target: {fileID: 7946831815657597611, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 288420933495450423, guid: e3a47310cd0f36947ad7f9345fc1b7bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3a47310cd0f36947ad7f9345fc1b7bf, type: 3}
 --- !u!4 &6364219872603677992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5277308054964659009, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 1256086440706557545}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9162101308469341378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7946831815657597611, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
     type: 3}
   m_PrefabInstance: {fileID: 1256086440706557545}
   m_PrefabAsset: {fileID: 0}

@@ -58,7 +58,7 @@ AnimatorStateMachine:
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -7618369799666950227}
-    m_Position: {x: 270, y: -250, z: 0}
+    m_Position: {x: 270, y: -240, z: 0}
   m_AnyStateTransitions:
   - {fileID: 8300857105250064618}
   - {fileID: 7393405163435244616}
@@ -68,7 +68,8 @@ AnimatorStateMachine:
   m_EntryTransitions:
   - {fileID: -2523286947589378068}
   m_StateMachineTransitions: {}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 9028992787461310490}
   m_AnyStatePosition: {x: 80, y: -150, z: 0}
   m_EntryPosition: {x: 580, y: -350, z: 0}
   m_ExitPosition: {x: 590, y: 50, z: 0}
@@ -338,7 +339,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: ea7f5d7443f605e4daf3e859f6bbe360, type: 2}
-  m_Tag: 
+  m_Tag: SwordAttack
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
@@ -740,3 +741,16 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &9028992787461310490
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337e90c354bdaee4c8f243dea1551bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animPreTxts: {fileID: 11400000, guid: 68ac0832d068f884087c5d9ac0c1951e, type: 2}

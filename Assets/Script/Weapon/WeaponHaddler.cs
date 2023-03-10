@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
 
-public class WeaponHaddler : MonoBehaviour
+public class WeaponHaddler :MonoBehaviour
 {
 
     public Collider collider;
@@ -21,7 +21,9 @@ public class WeaponHaddler : MonoBehaviour
         {
             StartCollider.AddListener(OnColliderStart);
         }
+       
     }
+
 
     public void EnableVFX()
     {

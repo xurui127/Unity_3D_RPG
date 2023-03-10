@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInputSystem input;
     private CharacterController playerController;
     private PlayerAnimController animController;
+    private PlayerAnimManager animManager;
     private PlayerAttackManager attackManager;
     private EnemyManager enemyManager;
     //public float speed = 4f;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
         animController = GetComponent<PlayerAnimController>();
         input = GetComponent<PlayerInputSystem>();
         attackManager = GetComponent<PlayerAttackManager>();
+        animManager = GetComponent<PlayerAnimManager>();
         input.EnableGamePlayInputs();
         board = new BB_Player(this.transform,
                               input, playerController,
@@ -46,20 +48,21 @@ public class PlayerController : MonoBehaviour
 
     private void InputHandler()
     {
-        if (input.Move && !animController.IsBusy)
+        //&& !animController.isBusy
+        if (input.Move && !animManager.IsBusy)
         {
             move.Execute(board);
             rotation.Execute(board);
         }
-        if (input.Roll && !animController.IsBusy)
+        if (input.Roll && !animManager.IsBusy)
         {
             roll.Execute(board);
         }
-        if (input.Attack && !animController.IsBusy)
+        if (input.Attack && !animManager.IsBusy)
         {
             attack.Execute(board);
         }
-        if (input.Sprint && !animController.IsBusy)
+        if (input.Sprint && !animManager.IsBusy)
         {
             sprint.Execute(board);
         }

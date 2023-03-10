@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.Rendering.UI;
 using UnityEngine.UI;
+using static ActionData;
 
 public abstract class AnimController : MonoBehaviour
 {
@@ -16,8 +17,8 @@ public abstract class AnimController : MonoBehaviour
 
     public AnimatorStateInfo lastAnimInfo;
     public AnimatorStateInfo LastAnimInfo { get => lastAnimInfo; set => lastAnimInfo = value; }
-    
-    //public delegate void NotifyBegin();
+
+
 
     protected int attackCount = 1;
     #region System
@@ -37,10 +38,6 @@ public abstract class AnimController : MonoBehaviour
     protected void SetAnimation(string paraName, float para)
     {
         anim.SetFloat(paraName, para);
-    }
-    protected void SetAnimation(string paraName, NotifyBegin begin)
-    {
-
     }
     #endregion
     public abstract  void OnMove(float speed);
