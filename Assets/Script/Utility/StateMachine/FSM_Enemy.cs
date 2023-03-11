@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.UI;
 
-namespace AI_Enemy
+
+namespace FinitStateMachine
 {   
     public enum StateType
     {
@@ -17,12 +15,12 @@ namespace AI_Enemy
         DEAD,
     }
     [Serializable]
-    public class FSM_Enemy
+    public class StateMachine
     {
         public IState curState;
         public Dictionary<StateType, IState> states;
         public BlackBoard board;
-        public FSM_Enemy fSM;
+        public StateMachine fSM;
         public void Init(BlackBoard board)
         {
  
@@ -39,7 +37,7 @@ namespace AI_Enemy
             states.Add(stateType, state);
         }
 
-        public void SwitchState(StateType stateType , FSM_Enemy fSM_Enemy,BlackBoard board)
+        public void SwitchState(StateType stateType , StateMachine fSM_Enemy,BlackBoard board)
         {
             if (!states.ContainsKey(stateType))
             {
@@ -54,7 +52,7 @@ namespace AI_Enemy
             curState.OnEnter(fSM_Enemy);
         }
 
-        public void OnUpdate(FSM_Enemy fSM_Enemy,BlackBoard board)
+        public void OnUpdate(StateMachine fSM_Enemy,BlackBoard board)
         {
             curState.OnCheck(fSM_Enemy);
             curState.OnUpdate(fSM_Enemy);

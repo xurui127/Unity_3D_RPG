@@ -16,7 +16,7 @@ public abstract class AnimController : MonoBehaviour
 
     public AnimatorStateInfo lastAnimInfo;
     public AnimatorStateInfo LastAnimInfo { get => lastAnimInfo; set => lastAnimInfo = value; }
-    
+
     //public delegate void NotifyBegin();
 
     protected int attackCount = 1;
@@ -38,10 +38,7 @@ public abstract class AnimController : MonoBehaviour
     {
         anim.SetFloat(paraName, para);
     }
-    protected void SetAnimation(string paraName, NotifyBegin begin)
-    {
 
-    }
     #endregion
     public abstract  void OnMove(float speed);
 

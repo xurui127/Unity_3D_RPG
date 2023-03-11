@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace AI_Enemy
+namespace FinitStateMachine
 {
     [Serializable]
     public class BlackBoard

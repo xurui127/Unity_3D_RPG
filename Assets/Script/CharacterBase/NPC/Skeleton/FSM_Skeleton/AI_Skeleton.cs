@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using AI_Enemy;
+using FinitStateMachine;
 using UnityEngine.UI;
 using UnityEngine.Rendering.Universal;
 
 public class AI_Skeleton : MonoBehaviour
 {
-    public FSM_Enemy fsm_Skeleton;
+    public StateMachine fsm_Skeleton;
     public BB_Skeleton board = new BB_Skeleton();
     // Start is called before the first frame update
     void Start()
     {
-        fsm_Skeleton = new FSM_Enemy();
+        fsm_Skeleton = new StateMachine();
         fsm_Skeleton.Init(board);
         fsm_Skeleton.AddState(StateType.IDLE, new IdleState_Skeleton<BB_Skeleton>(board));
         fsm_Skeleton.AddState(StateType.MOVE, new MoveState_Skeleton<BB_Skeleton>(board));

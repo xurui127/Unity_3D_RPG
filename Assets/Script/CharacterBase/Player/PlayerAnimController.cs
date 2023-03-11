@@ -14,11 +14,11 @@ public class PlayerAnimController : AnimController
     [SerializeField] private PlayerAnimPreTxt_SO animpPreTxts;
     [Range(0f, 1f)]
     [SerializeField] private float comboCancletime;
+    
+    
+    
     private GameObject weapon;
     private WeaponHaddler curWeapon;
-   
-
-
     private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
     public bool IsBusy => isBusy;
     private UnityEvent HitCounting;
@@ -28,7 +28,6 @@ public class PlayerAnimController : AnimController
     protected override void Start()
     {
         base.Start();
-       // animpPreTxts = new PlayerAnimPreTxt_SO();
         if (HitCounting == null)
         {
             HitCounting = new UnityEvent();
