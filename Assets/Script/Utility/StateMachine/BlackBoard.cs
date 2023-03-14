@@ -9,8 +9,6 @@ namespace FinitStateMachine
     [Serializable]
     public class BlackBoard
     {
-        public  Animator anim;
-        public  NavMeshAgent agent;
-        public  GameObject target;
+       
     }
 }

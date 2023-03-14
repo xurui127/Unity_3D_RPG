@@ -31,5 +31,10 @@ public class SkeletonAnimController : AnimController
     {
         
     }
+
+    public override void OnAttack(int attackCount)
+    {
+        
+    }
 }
 

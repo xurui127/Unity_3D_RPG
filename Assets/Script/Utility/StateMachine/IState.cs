@@ -8,10 +8,10 @@ namespace FinitStateMachine
    
     public interface IState
     {
-        public void OnEnter(StateMachine fSM_Enemy);
-        public void OnExit(StateMachine fSM_Enemy);
-        public void OnUpdate(StateMachine fSM_Enemy);
-        public void OnCheck(StateMachine fSM_Enemy);
+        public void OnEnter(StateMachine stateMachine);
+        public void OnExit(StateMachine stateMachine);
+        public void OnUpdate(StateMachine stateMachine);
+        public void OnCheck(StateMachine stateMachine);
 
         
     }

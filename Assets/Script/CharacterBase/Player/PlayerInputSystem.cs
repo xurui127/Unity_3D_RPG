@@ -21,6 +21,10 @@ public class PlayerInputSystem : MonoBehaviour
     {
         playerInputActions = new PlayerInputActions();   
     }
+    private void Start()
+    {
+        EnableGamePlayInputs();
+    }
     public void EnableGamePlayInputs()
     {
         playerInputActions.GamePlay.Enable();

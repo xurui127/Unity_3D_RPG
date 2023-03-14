@@ -11,7 +11,7 @@ public abstract class AnimController : MonoBehaviour
 {
     protected Animator anim;
     public Animator animIns { get { return anim; } }
-    public AnimatorStateInfo curAnimInfo;
+    private AnimatorStateInfo curAnimInfo;
     public AnimatorStateInfo CurAnimInfo { get { return curAnimInfo; } set => curAnimInfo = value; }
 
     public AnimatorStateInfo lastAnimInfo;
@@ -38,11 +38,16 @@ public abstract class AnimController : MonoBehaviour
     {
         anim.SetFloat(paraName, para);
     }
+    public bool AnimIsFinished()
+    {
+       return anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
+    }
 
     #endregion
     public abstract  void OnMove(float speed);
 
     public abstract void OnAttack();
+    public abstract void OnAttack(int attackCount);
     protected abstract void Dead();
     public abstract void GetHit();
    

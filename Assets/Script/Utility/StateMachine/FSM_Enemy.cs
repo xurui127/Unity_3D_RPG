@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -13,7 +14,8 @@ namespace FinitStateMachine
         HIT,
         TUANT,
         DEAD,
-    }
+    } 
+   
     [Serializable]
     public class StateMachine
     {

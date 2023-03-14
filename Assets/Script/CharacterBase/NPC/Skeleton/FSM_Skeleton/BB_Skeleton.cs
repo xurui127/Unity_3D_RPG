@@ -9,5 +9,8 @@ using UnityEngine.UI;
 [Serializable]
 public class BB_Skeleton : BlackBoard
 {
+    public Animator anim;
+    public NavMeshAgent agent;
+    public GameObject target;
     public SkeletonAnimController animController;
 }

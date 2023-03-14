@@ -19,8 +19,9 @@ public class PlayerAnimController : AnimController
     
     private GameObject weapon;
     private WeaponHaddler curWeapon;
-    private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
-    public bool IsBusy => isBusy;
+    //private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
+    //public bool IsBusy => isBusy;
+    public bool IsBusy;
     private UnityEvent HitCounting;
     private UnityEvent CheckLastAnim;
   
@@ -45,36 +46,46 @@ public class PlayerAnimController : AnimController
     }
     private void Update()
     {
-        ComboHaddler();
+        //ComboHaddler();
         //Debug.Log(attackPreAnimTxt + hitCount.ToString());
     }
 
     #region Combo Anim Haddlers
-    public void ComboHaddler()
-    {
+    //public void ComboHaddler()
+    //{
 
-        curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
-        if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString())&& curAnimInfo.normalizedTime < 1f)
+    //    curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
+    //    if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString())&& curAnimInfo.normalizedTime < 1f)
+    //    {
+    //        curWeapon.EnableVFX();
+    //    }
+    //    if (LastAnimInfo.normalizedTime >= 1f)
+    //    {
+    //        curWeapon.DisableVFX();
+    //    }
+    //    if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
+    //    {
+    //        attackCount++;
+    //        HitCounting.Invoke();
+    //    }
+    //    if (curAnimInfo.IsName(animpPreTxts.idleTxt) || curAnimInfo.IsName(animpPreTxts.rollTxt))
+    //    {
+    //        if (curAnimInfo.normalizedTime >= comboCancletime)
+    //        {
+    //            attackCount = 1;
+    //        }
+    //    }
+    //    lastAnimInfo = curAnimInfo;
+    //}
+
+    public bool CanDoCombo()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f &&
+            anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.95f )
         {
-            curWeapon.EnableVFX();
+            return true;
         }
-        if (LastAnimInfo.normalizedTime >= 1f)
-        {
-            curWeapon.DisableVFX();
-        }
-        if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
-        {
-            attackCount++;
-            HitCounting.Invoke();
-        }
-        if (curAnimInfo.IsName(animpPreTxts.idleTxt) || curAnimInfo.IsName(animpPreTxts.rollTxt))
-        {
-            if (curAnimInfo.normalizedTime >= comboCancletime)
-            {
-                attackCount = 1;
-            }
-        }
-        lastAnimInfo = curAnimInfo;
+        return false;
     }
     private void CheckHitCount()
     {
@@ -84,6 +95,7 @@ public class PlayerAnimController : AnimController
         }
     }
 
+    
 
     #endregion
     #region Behaviours Haddlers 
@@ -92,6 +104,10 @@ public class PlayerAnimController : AnimController
         SetAnimation(animpPreTxts.moveTxt, speed);
     }
     public override void OnAttack()
+    {
+        SetAnimation(animpPreTxts.attackTxt + attackCount.ToString());
+    }
+    public override void OnAttack(int attackCount)
     {
         SetAnimation(animpPreTxts.attackTxt + attackCount.ToString());
     }
