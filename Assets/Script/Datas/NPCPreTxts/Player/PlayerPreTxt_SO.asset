@@ -24,3 +24,4 @@ MonoBehaviour:
   rollTxt: roll
   attackTxt: 'attack '
   sprintTxt: sprint
+  comboTxt: combo

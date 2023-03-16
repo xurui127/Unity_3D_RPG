@@ -51,37 +51,12 @@ public class PlayerAnimController : AnimController
     }
 
     #region Combo Anim Haddlers
-    //public void ComboHaddler()
-    //{
-
-    //    curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
-    //    if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString())&& curAnimInfo.normalizedTime < 1f)
-    //    {
-    //        curWeapon.EnableVFX();
-    //    }
-    //    if (LastAnimInfo.normalizedTime >= 1f)
-    //    {
-    //        curWeapon.DisableVFX();
-    //    }
-    //    if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
-    //    {
-    //        attackCount++;
-    //        HitCounting.Invoke();
-    //    }
-    //    if (curAnimInfo.IsName(animpPreTxts.idleTxt) || curAnimInfo.IsName(animpPreTxts.rollTxt))
-    //    {
-    //        if (curAnimInfo.normalizedTime >= comboCancletime)
-    //        {
-    //            attackCount = 1;
-    //        }
-    //    }
-    //    lastAnimInfo = curAnimInfo;
-    //}
+    
 
     public bool CanDoCombo()
     {
         if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f &&
-            anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.95f )
+            anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f)
         {
             return true;
         }
@@ -94,9 +69,6 @@ public class PlayerAnimController : AnimController
             attackCount = 1;
         }
     }
-
-    
-
     #endregion
     #region Behaviours Haddlers 
     public override void OnMove(float speed)
@@ -136,3 +108,31 @@ public class PlayerAnimController : AnimController
     #endregion
 
 }
+#region 
+//public void ComboHaddler()
+//{
+
+//    curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
+//    if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString())&& curAnimInfo.normalizedTime < 1f)
+//    {
+//        curWeapon.EnableVFX();
+//    }
+//    if (LastAnimInfo.normalizedTime >= 1f)
+//    {
+//        curWeapon.DisableVFX();
+//    }
+//    if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
+//    {
+//        attackCount++;
+//        HitCounting.Invoke();
+//    }
+//    if (curAnimInfo.IsName(animpPreTxts.idleTxt) || curAnimInfo.IsName(animpPreTxts.rollTxt))
+//    {
+//        if (curAnimInfo.normalizedTime >= comboCancletime)
+//        {
+//            attackCount = 1;
+//        }
+//    }
+//    lastAnimInfo = curAnimInfo;
+//}
+#endregion

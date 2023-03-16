@@ -17,5 +17,6 @@ namespace SO_PlayerPreTxt
         public string rollTxt;
         public string attackTxt;
         public string sprintTxt;
+        public string comboTxt;
     }
 }

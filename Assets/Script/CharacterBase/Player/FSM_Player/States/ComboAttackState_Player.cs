@@ -13,12 +13,12 @@ public class ComboAttackState_Player<T> : IState where T : BB_Player
     protected readonly int maxAttackIndex = 2;
     protected  int preAttackIndex = -1;
     private  List<IState> comboList;
-    private bool isAttack = false;
     private IState preAttackState;
-    public ComboAttackState_Player(T board, List<IState> comboList)
+    private SubStateMachine subStateMachine;
+    public ComboAttackState_Player(T board, SubStateMachine subStateMachine)
     {
         this.board = board;
-        this.comboList = comboList;
+        this.subStateMachine = subStateMachine;
     }
 
     public void OnCheck(StateMachine stateMachine)
@@ -28,12 +28,13 @@ public class ComboAttackState_Player<T> : IState where T : BB_Player
 
     public void OnEnter(StateMachine stateMachine)
     {
-        //UnityEngine.Debug.Log("In Attack");
-        // board.animController.OnAttack(currentAttackIndex);
-          Debug.Log(preAttackIndex);
-          
-        comboList[currentAttackIndex].OnEnter(stateMachine);
-        preAttackState = comboList[currentAttackIndex];
+      
+        Debug.Log(preAttackIndex);
+
+        //comboList[currentAttackIndex].OnEnter(stateMachine);
+        //preAttackState = comboList[currentAttackIndex];
+
+        subStateMachine.SwitchSubState(StateType.ATTACK, subStateMachine, board, 0);
 
         //currentAttackIndex++;
     }
@@ -44,7 +45,7 @@ public class ComboAttackState_Player<T> : IState where T : BB_Player
         //UnityEngine.Debug.Log("out Attack");
         //preAttackState.OnExit(stateMachine);
 
-        preAttackState.OnExit(stateMachine);
+        //preAttackState.OnExit(stateMachine);
         //foreach(IState state in comboList)
         //{
         //    state.OnExit(stateMachine);
@@ -54,23 +55,30 @@ public class ComboAttackState_Player<T> : IState where T : BB_Player
 
     public void OnUpdate(StateMachine stateMachine)
     {
-        if (board.input.Attack && board.animController.CanDoCombo() && !isAttack)
-        {
-            isAttack = true;
-            if (currentAttackIndex < maxAttackIndex)
-            {
-                preAttackIndex = currentAttackIndex;
-                currentAttackIndex++;
-                stateMachine.SwitchState(StateType.ATTACK,stateMachine,board);
-                //comboList[currentAttackIndex].OnEnter(stateMachine);
-            }
-            else
-            {
-                currentAttackIndex = defaultAttackIndex;
-                stateMachine.SwitchState(StateType.ATTACK, stateMachine, board);
-            }
+        //if (board.input.Attack && board.animController.CanDoCombo())
+        //{
+        //        preAttackIndex = currentAttackIndex;
+        //        currentAttackIndex++;
+        //    if (currentAttackIndex >= comboList.Count)
+        //    {
+        //        currentAttackIndex = 0;
+        //    }
+        //    if (preAttackIndex != currentAttackIndex)
+        //    {
+        //        //stateMachine.SwitchState(StateType.ATTACK, stateMachine, board);
+        //    }
+        //    //if (currentAttackIndex < maxAttackIndex)
+        //    //{
+        //    //    stateMachine.SwitchState(StateType.ATTACK,stateMachine,board);
+        //    //    //comboList[currentAttackIndex].OnEnter(stateMachine);
+        //    //}
+        //    //else
+        //    //{
+        //    //    currentAttackIndex = defaultAttackIndex;
+        //    //    stateMachine.SwitchState(StateType.ATTACK, stateMachine, board);
+        //    //}
 
-        }
+        //}
         if (board.animController.AnimIsFinished())
         {
             ResetAttackIndex();
@@ -88,7 +96,7 @@ public class ComboAttackState_Player<T> : IState where T : BB_Player
     {
         currentAttackIndex = defaultAttackIndex;
         preAttackIndex = -1;
-        isAttack = false;
+
     }
 
 }

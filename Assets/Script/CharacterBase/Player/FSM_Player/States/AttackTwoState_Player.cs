@@ -12,6 +12,7 @@ public class AttackTwoState_Player<T> : IState where T : BB_Player
     public AttackTwoState_Player(T board)
     {
         this.board = board;
+        
     }
 
     public void OnCheck(StateMachine stateMachine)
@@ -33,5 +34,17 @@ public class AttackTwoState_Player<T> : IState where T : BB_Player
 
     public void OnUpdate(StateMachine stateMachine)
     {
+        if (board.input.Attack && board.animController.CanDoCombo())
+        {
+            stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board, 2);
+        }
+        if (board.animController.AnimIsFinished())
+        {
+            stateMachine.SwitchState(StateType.IDLE, stateMachine, board);
+        }
+        if (board.input.Move && board.animController.AnimIsFinished())
+        {
+            stateMachine.SwitchState(StateType.MOVE, stateMachine, board);
+        }
     }
 }

@@ -34,7 +34,7 @@ public class IdleState_Player<T> : IState where T : BB_Player
         }
         if (board.input.Attack)
         {
-            stateMachine.SwitchState(StateType.ATTACK, stateMachine, board);
+            stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board, 0);
         }
        
     }

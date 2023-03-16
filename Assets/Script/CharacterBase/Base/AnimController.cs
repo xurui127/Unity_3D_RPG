@@ -38,6 +38,10 @@ public abstract class AnimController : MonoBehaviour
     {
         anim.SetFloat(paraName, para);
     }
+    protected void SetAnimation(string paraName,bool para)
+    {
+        anim.SetBool(paraName, para);
+    }
     public bool AnimIsFinished()
     {
        return anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
