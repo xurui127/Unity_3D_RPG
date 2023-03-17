@@ -12,6 +12,8 @@ namespace FinitStateMachine
         MOVE,
         COMBO,
         ATTACK,
+        SPRINT,
+        ROLL,
         HIT,
         TUANT,
         DEAD,

@@ -1,12 +1,12 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PlayerInputSystem : MonoBehaviour
 {
-    PlayerInputActions playerInputActions;
+   public PlayerInputActions playerInputActions;
 
     Vector2 axes => playerInputActions.GamePlay.Move.ReadValue<Vector2>();
     Vector2 smoothInputVelocity;
-    [SerializeField]float smoothSpeed = 0.05f;
     Vector2 smoothInput;
     public float Horizontal => GetSmoothInput().x;
     public float Vertical => GetSmoothInput().y;
@@ -16,11 +16,15 @@ public class PlayerInputSystem : MonoBehaviour
     public bool Roll => playerInputActions.GamePlay.Roll.WasPressedThisFrame();
 
     public bool Sprint => playerInputActions.GamePlay.Sprint.WasPressedThisFrame();
+    
+    
+    private float smoothSpeed = 0.05f;
 
     private void Awake()
     {
         playerInputActions = new PlayerInputActions();   
     }
+  
     private void Start()
     {
         EnableGamePlayInputs();
@@ -37,3 +41,27 @@ public class PlayerInputSystem : MonoBehaviour
     }
 
 }
+//public string GetInputKey()
+//{
+//    if (Move)
+//    {
+//        return playerInputActions.GamePlay.Move.name.ToString();
+//    }
+//    else if(Attack)
+//    {
+//        return playerInputActions.GamePlay.Attack.name.ToString();
+//    }
+//    else if (Roll)
+//    {
+//        return playerInputActions.GamePlay.Roll.name.ToString();
+//    }
+//    else if (Sprint)
+//    {
+//        playerInputActions.GamePlay.Sprint.name.ToString();
+//    }
+//    else
+//    {
+//        return "null";
+//    }
+//    return "null";
+//}

@@ -38,7 +38,14 @@ public class MoveState_Player<T> : IState where T : BB_Player
         if (board.input.Attack)
         {
             stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board,0);
-            
+        }
+        if (board.input.Roll)
+        {
+            stateMachine.SwitchState(StateType.ROLL, stateMachine, board);
+        }
+        if (board.input.Sprint)
+        {
+            stateMachine.SwitchState(StateType.SPRINT, stateMachine, board);
         }
     }
 }

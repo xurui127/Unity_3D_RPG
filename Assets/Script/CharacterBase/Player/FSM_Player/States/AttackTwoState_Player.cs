@@ -21,7 +21,6 @@ public class AttackTwoState_Player<T> : IState where T : BB_Player
 
     public void OnEnter(StateMachine stateMachine)
     {
-        UnityEngine.Debug.Log("In Attack 2");
 
         board.animController.OnAttack(attackIndex);
 
@@ -29,15 +28,26 @@ public class AttackTwoState_Player<T> : IState where T : BB_Player
 
     public void OnExit(StateMachine stateMachine)
     {
-        UnityEngine.Debug.Log("out Attack 2");
     }
 
     public void OnUpdate(StateMachine stateMachine)
     {
-        if (board.input.Attack && board.animController.CanDoCombo())
+        if (board.animController.CanDoCombo())
         {
-            stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board, 2);
+            if (board.input.Attack)
+            {
+                stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board, 2);
+            }
+            else if (board.input.Sprint)
+            {
+                stateMachine.SwitchState(StateType.SPRINT, stateMachine, board);
+            }
+            else if (board.input.Roll)
+            {
+                stateMachine.SwitchState(StateType.ROLL, stateMachine, board);
+            }
         }
+        
         if (board.animController.AnimIsFinished())
         {
             stateMachine.SwitchState(StateType.IDLE, stateMachine, board);
