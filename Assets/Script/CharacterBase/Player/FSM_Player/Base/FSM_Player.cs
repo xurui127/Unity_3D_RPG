@@ -12,7 +12,7 @@ public class FSM_Player : MonoBehaviour
 {
     private StateMachine fsm_Player;
     public BB_Player board = new BB_Player();
-    
+
     // Start is called before the first frame update
     void Start()
     {

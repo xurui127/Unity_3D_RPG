@@ -14,30 +14,20 @@ public class PlayerAnimController : AnimController
     [SerializeField] private PlayerAnimPreTxt_SO animpPreTxts;
     [Range(0f, 1f)]
     [SerializeField] private float comboCancletime;
-    
-    
+
+    private bool isInCombo;
     
     private GameObject weapon;
     private WeaponHaddler curWeapon;
-    //private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
-    //public bool IsBusy => isBusy;
-    public bool IsBusy;
-    private UnityEvent HitCounting;
-    private UnityEvent CheckLastAnim;
+    private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
+    public bool IsBusy => isBusy;
+    //public bool IsBusy;
+   
   
 
     protected override void Start()
     {
         base.Start();
-        if (HitCounting == null)
-        {
-            HitCounting = new UnityEvent();
-        }
-        HitCounting.AddListener(CheckHitCount);
-        if (CheckLastAnim == null)
-        {
-            CheckLastAnim = new UnityEvent();
-        }
         weapon = GameObjectFinder.FindChild(this.gameObject, "sword01");
         if(weapon != null)
         {
@@ -53,21 +43,26 @@ public class PlayerAnimController : AnimController
     #region Combo Anim Haddlers
     
 
-    public bool CanDoCombo()
+    public bool CanDoCombo(float start,float end)
     {
-        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f &&
-            anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= 1.0f)
+        if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= start &&
+            anim.GetCurrentAnimatorStateInfo(0).normalizedTime <= end)
         {
             return true;
         }
         return false;
     }
-    private void CheckHitCount()
+    public void ComboStart()
     {
-        if (attackCount > 3)
-        {
-            attackCount = 1;
-        }
+        isInCombo = true; 
+    }
+    public void ComboEnd()
+    {
+        isInCombo = false;
+    }
+    public bool IsInCombo()
+    {
+        return isInCombo;
     }
     #endregion
     #region Behaviours Haddlers 
@@ -83,13 +78,13 @@ public class PlayerAnimController : AnimController
     {
         SetAnimation(animpPreTxts.attackTxt + attackCount.ToString());
     }
-    public void RollHaddler()
+    public void OnRoll()
     {
 
         SetAnimation(animpPreTxts.rollTxt);
 
     }
-    public void SprintHaddler()
+    public void OnSprint()
     {
         SetAnimation(animpPreTxts.sprintTxt);
     }

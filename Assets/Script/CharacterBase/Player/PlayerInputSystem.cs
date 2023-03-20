@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class PlayerInputSystem : MonoBehaviour
 {
-   public PlayerInputActions playerInputActions;
-
+   private PlayerInputActions playerInputActions;
+    
     Vector2 axes => playerInputActions.GamePlay.Move.ReadValue<Vector2>();
     Vector2 smoothInputVelocity;
     Vector2 smoothInput;
@@ -16,13 +16,14 @@ public class PlayerInputSystem : MonoBehaviour
     public bool Roll => playerInputActions.GamePlay.Roll.WasPressedThisFrame();
 
     public bool Sprint => playerInputActions.GamePlay.Sprint.WasPressedThisFrame();
-    
-    
+
+   // bool AttackClick => playerInputActions.GamePlay.Attack
     private float smoothSpeed = 0.05f;
 
     private void Awake()
     {
-        playerInputActions = new PlayerInputActions();   
+        playerInputActions = new PlayerInputActions();
+       
     }
   
     private void Start()
@@ -39,7 +40,12 @@ public class PlayerInputSystem : MonoBehaviour
         smoothInput = Vector2.SmoothDamp(smoothInput, axes, ref smoothInputVelocity, smoothSpeed);
         return smoothInput;
     }
+    public void ClearInputCache()
+    {
+        playerInputActions.GamePlay.Attack.Disable();
 
+        playerInputActions.GamePlay.Attack.Enable();
+    }
 }
 //public string GetInputKey()
 //{

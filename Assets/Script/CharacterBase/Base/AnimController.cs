@@ -11,7 +11,7 @@ public abstract class AnimController : MonoBehaviour
 {
     protected Animator anim;
     public Animator animIns { get { return anim; } }
-    private AnimatorStateInfo curAnimInfo;
+    protected AnimatorStateInfo curAnimInfo;
     public AnimatorStateInfo CurAnimInfo { get { return curAnimInfo; } set => curAnimInfo = value; }
 
     public AnimatorStateInfo lastAnimInfo;
@@ -20,6 +20,7 @@ public abstract class AnimController : MonoBehaviour
     //public delegate void NotifyBegin();
 
     protected int attackCount = 1;
+    protected bool isInAction;
     #region System
 
     //Start is called before the first frame update
@@ -42,11 +43,31 @@ public abstract class AnimController : MonoBehaviour
     {
         anim.SetBool(paraName, para);
     }
+    public bool AnimIsFinished(string name)
+    {
+       
+        return anim.GetCurrentAnimatorStateInfo(0).IsName(name);
+    }
     public bool AnimIsFinished()
     {
+      
        return anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f;
     }
 
+    public bool ActionStart()
+    {
+       return  isInAction = true;
+    }
+
+    public bool ActionEnd()
+    {
+        return isInAction = false;
+    }
+    public bool IsInAction()
+    {
+        return isInAction;
+    }
+    
     #endregion
     public abstract  void OnMove(float speed);
 

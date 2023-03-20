@@ -31,21 +31,24 @@ public class MoveState_Player<T> : IState where T : BB_Player
 
     public void OnUpdate(StateMachine stateMachine)
     {
-        if (!board.input.Move)
-        {
-            stateMachine.SwitchState(StateType.IDLE, stateMachine, board);
-        }
+       
         if (board.input.Attack)
         {
             stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board,0);
         }
-        if (board.input.Roll)
+       else if (board.input.Roll)
         {
             stateMachine.SwitchState(StateType.ROLL, stateMachine, board);
         }
-        if (board.input.Sprint)
+       else if (board.input.Sprint)
         {
             stateMachine.SwitchState(StateType.SPRINT, stateMachine, board);
         }
+        else if (!board.input.Move)
+        {
+            stateMachine.SwitchState(StateType.IDLE, stateMachine, board);
+
+        }
+
     }
 }

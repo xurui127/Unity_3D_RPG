@@ -59,7 +59,7 @@ namespace Player
 
             if (input.Roll && !animController.IsBusy)
             {
-                animController.RollHaddler();
+                animController.OnRoll();
             }
         }
         private void CharacterAttack()
@@ -83,7 +83,7 @@ namespace Player
         {
             if (input.Sprint && !animController.IsBusy)
             {
-                animController.SprintHaddler();
+                animController.OnSprint();
             }
         }
         #endregion

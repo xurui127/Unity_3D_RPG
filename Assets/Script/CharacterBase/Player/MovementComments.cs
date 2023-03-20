@@ -22,7 +22,7 @@ public class Roll : Commend
 {
     public override void Execute(BB_Player board)
     {
-        board.animController.RollHaddler();
+        board.animController.OnRoll();
     }
 }
 
@@ -37,6 +37,6 @@ public class Sprint : Commend
 {
     public override void Execute(BB_Player board)
     {
-        board.animController.SprintHaddler();
+        board.animController.OnSprint();
     }
 }

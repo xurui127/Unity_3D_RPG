@@ -20,7 +20,7 @@ namespace FinitStateMachine
     } 
    
     [Serializable]
-    public class StateMachine
+    public class StateMachine:MonoBehaviour
     {
         public  IState curState;
         public StateMachine fSM;

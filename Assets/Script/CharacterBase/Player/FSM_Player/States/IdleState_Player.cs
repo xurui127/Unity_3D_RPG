@@ -26,6 +26,7 @@ public class IdleState_Player<T> : IState where T : BB_Player
     public void OnEnter(StateMachine stateMachine)
     {
        //Debug.Log("In Idle");
+
     }
 
     public void OnExit(StateMachine stateMachine)
