@@ -10,13 +10,11 @@ public class AttackThreeState_Player<T> : IState where T : BB_Player
 {
     private T board;
     private int attackIndex = 3;
-    private float lastAttackTime;
-    private float comboTimeLimit;
-    bool combo;
+  
     public AttackThreeState_Player(T board)
     {
         this.board = board;
-        comboTimeLimit = 1f;
+      
         
         
     }
@@ -27,14 +25,16 @@ public class AttackThreeState_Player<T> : IState where T : BB_Player
 
     public void OnEnter(StateMachine stateMachine)
     {
-        combo = false;
-        lastAttackTime = Time.time;
+       
         board.animController.OnAttack(attackIndex);
+        CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackBegin.ToString());
+
     }
 
     public void OnExit(StateMachine stateMachine)
     {
-        board.input.ClearInputCache();
+       
+        CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackEnd.ToString());
 
     }
 

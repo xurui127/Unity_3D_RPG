@@ -13,9 +13,11 @@ public class MoveState_Player<T> : IState where T : BB_Player
     }
     public void OnCheck(StateMachine stateMachine)
     {
-        board.animController.OnMove(board.input.moveValue.magnitude);
-        board.playerController.Move(board.input.moveValue * board.moveSpeed * Time.deltaTime);
-        board.transform.rotation = Quaternion.LookRotation(board.input.moveValue, Vector3.up);
+        //board.animController.OnMove(board.input.moveValue.magnitude);
+        //board.playerController.Move(board.input.moveValue * board.moveSpeed * Time.deltaTime);board.animController.OnMove(board.input.moveValue.magnitude);
+        board.animController.OnMove(board.input.movementInput.magnitude);
+        board.playerController.Move(board.input.movementInput * board.moveSpeed * Time.deltaTime);
+        //board.transform.rotation = Quaternion.LookRotation(board.newPlayerInput.movementInput, Vector3.up);
     }
 
     public void OnEnter(StateMachine stateMachine)
@@ -31,16 +33,16 @@ public class MoveState_Player<T> : IState where T : BB_Player
 
     public void OnUpdate(StateMachine stateMachine)
     {
-       
+
         if (board.input.Attack)
         {
-            stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board,0);
+            stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board, 0);
         }
-       else if (board.input.Roll)
+        else if (board.input.Roll)
         {
             stateMachine.SwitchState(StateType.ROLL, stateMachine, board);
         }
-       else if (board.input.Sprint)
+        else if (board.input.Sprint)
         {
             stateMachine.SwitchState(StateType.SPRINT, stateMachine, board);
         }

@@ -18,13 +18,13 @@ public class SprintState_Player<T> : IState where T : BB_Player
 
     public void OnEnter(StateMachine stateMachine)
     {
-        Debug.Log("in Sprint");
+        //Debug.Log("in Sprint");
         board.animController.OnSprint();
     }
 
     public void OnExit(StateMachine stateMachine)
     {
-        Debug.Log("out Sprint");
+       // Debug.Log("out Sprint");
 
     }
 

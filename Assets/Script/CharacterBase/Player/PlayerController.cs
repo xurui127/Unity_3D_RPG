@@ -31,11 +31,6 @@ public class PlayerController : MonoBehaviour
         input = GetComponent<PlayerInputSystem>();
         attackManager = GetComponent<PlayerAttackManager>();
         input.EnableGamePlayInputs();
-        //board = new BB_Player(this.transform,
-        //                      input, playerController,
-        //                      animController,
-        //                      attackManager,
-        //                      4.0f);
     }
 
     // Update is called once per frame
@@ -48,6 +43,7 @@ public class PlayerController : MonoBehaviour
     {
         if (input.Move && !animController.IsBusy)
         {
+            Debug.Log("In");
             move.Execute(board);
             rotation.Execute(board);
         }

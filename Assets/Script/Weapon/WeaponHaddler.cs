@@ -1,9 +1,11 @@
 
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting.FullSerializer.Internal;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
+using Utility;
 
 public class WeaponHaddler : MonoBehaviour
 {
@@ -12,7 +14,10 @@ public class WeaponHaddler : MonoBehaviour
     private float colliderWaitingTime = 0.1f;
     [HideInInspector]
     public UnityEvent StartCollider = new UnityEvent();
-    public GameObject swordVFX;
+    public  GameObject swordVFX;
+    public GameObject currentVFx;
+
+
     public void Start()
     {
 
@@ -21,8 +26,29 @@ public class WeaponHaddler : MonoBehaviour
         {
             StartCollider.AddListener(OnColliderStart);
         }
+       
+        CombatEventManager.Instance.AddEventListener(NPCEventType.AttackBegin.ToString(), GenerateVfX);
+        CombatEventManager.Instance.AddEventListener(NPCEventType.AttackBegin.ToString(), DestroyVFX);
     }
 
+   public void InitVFX()
+    {
+        Instantiate(swordVFX, transform).SetActive(true);
+      
+    }
+    public void GenerateVfX()
+    {
+        InitVFX();
+    }
+
+    public void DestroyVFX()
+    {
+        //var cur = GameObjectFinder.FindChild(this.gameObject, "Splash01");
+        //Debug.Log(cur.name);
+        //Destroy(cur);
+        //var cur = transform.Find(swordVFX.name);
+        //Destroy(cur);
+    }
     public void EnableVFX()
     {
         swordVFX.SetActive(true);
@@ -59,6 +85,22 @@ public class WeaponHaddler : MonoBehaviour
         //        target.GetHit();
 
         //    }
+        //}
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown("1"))
+        {
+            DestroyVFX();
+            //Debug.Log("In 1");
+            //CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackBegin.ToString());
+            //EnableVFX();
+        }
+        //if (Input.GetKeyDown("2"))
+        //{
+        //    Debug.Log("In 2");
+
+        //    CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackEnd.ToString());
         //}
     }
 

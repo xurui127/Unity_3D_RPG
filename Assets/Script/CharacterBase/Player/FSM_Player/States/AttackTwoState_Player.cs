@@ -9,15 +9,11 @@ public class AttackTwoState_Player<T> : IState where T : BB_Player
 {
     private T board;
     private int attackIndex = 2;
-    private float lastAttackTime;
-    private float comboTimeLimit;
-    bool combo;
+   
 
     public AttackTwoState_Player(T board)
     {
         this.board = board;
-        comboTimeLimit = 1f;
-
     }
 
     public void OnCheck(StateMachine stateMachine)
@@ -26,23 +22,23 @@ public class AttackTwoState_Player<T> : IState where T : BB_Player
 
     public void OnEnter(StateMachine stateMachine)
     {
-        combo = false;
-
-        lastAttackTime = Time.time;
+       
         board.animController.OnAttack(attackIndex);
+        CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackBegin.ToString());
 
     }
 
     public void OnExit(StateMachine stateMachine)
     {
-        board.input.ClearInputCache();
+    
+        CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackEnd.ToString());
 
 
     }
 
     public void OnUpdate(StateMachine stateMachine)
     {
-        if (board.animController.CanDoCombo(0.65f, 1f))
+        if (board.animController.CanDoCombo(0.7f, 1f))
         {
             if (board.input.Attack)
             {
@@ -60,7 +56,6 @@ public class AttackTwoState_Player<T> : IState where T : BB_Player
         if (board.animController.AnimIsFinished())
         {
             stateMachine.SwitchState(StateType.IDLE, stateMachine, board);
-
         }
 
 

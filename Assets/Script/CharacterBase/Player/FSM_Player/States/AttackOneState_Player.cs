@@ -1,28 +1,18 @@
 using FinitStateMachine;
 using NPC_Player;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using Unity.VisualScripting.InputSystem;
-using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.Universal;
-using Debug = UnityEngine.Debug;
+
 
 public class AttackOne_Player<T> : IState where T : BB_Player
 {
     private T board;
     private int attackIndex = 1;
-    private float lastAttackTime;
-    private float comboTimeLimit;
-    private bool combo;
+   
 
 
     public AttackOne_Player(T board)
     {
         this.board = board;
-        comboTimeLimit = 1f;
+      
 
     }
     public void OnCheck(StateMachine stateMachine)
@@ -31,15 +21,15 @@ public class AttackOne_Player<T> : IState where T : BB_Player
     }
     public void OnEnter(StateMachine stateMachine)
     {
-        combo = false;
-
-        lastAttackTime = Time.time;
+       
         board.animController.OnAttack(attackIndex);
-
+        CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackBegin.ToString());
     }
 
     public void OnExit(StateMachine stateMachine)
     {
+
+        CombatEventManager.Instance.TriggerEventListener(NPCEventType.AttackEnd.ToString());
 
 
 
@@ -47,7 +37,7 @@ public class AttackOne_Player<T> : IState where T : BB_Player
 
     public void OnUpdate(StateMachine stateMachine)
     {
-        if (board.animController.CanDoCombo(0.45f, 1f))
+        if (board.animController.CanDoCombo(0.4f, 1f))
         {
             if (board.input.Attack)
             {
@@ -63,7 +53,6 @@ public class AttackOne_Player<T> : IState where T : BB_Player
             }
         }
        
-
         if (board.animController.AnimIsFinished())
         {
             stateMachine.SwitchState(StateType.IDLE, stateMachine, board);

@@ -38,10 +38,10 @@ public class RollState_Player<T> : IState where T : BB_Player
         {
             stateMachine.SwitchSubState(StateType.ATTACK, stateMachine, board, 0);
         }
-        if (board.input.Move && !board.animController.IsInAction())
-        {
-            stateMachine.SwitchState(StateType.MOVE, stateMachine, board);
-        }
+        //if (board.input.Move && !board.animController.IsInAction())
+        //{
+        //    stateMachine.SwitchState(StateType.MOVE, stateMachine, board);
+        //}
 
         if (board.input.Sprint && !board.animController.IsInAction())
         {

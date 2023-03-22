@@ -1475,7 +1475,6 @@ GameObject:
   - component: {fileID: 1994737097}
   - component: {fileID: 3275795212970028903}
   - component: {fileID: 1994737102}
-  - component: {fileID: 1318912437542794372}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1580,7 +1579,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animpPreTxts: {fileID: 11400000, guid: 68ac0832d068f884087c5d9ac0c1951e, type: 2}
   comboCancletime: 0.5
-  IsBusy: 0
 --- !u!114 &1994737102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1597,27 +1595,6 @@ MonoBehaviour:
   enemies: []
   target: {fileID: 0}
   minDis: 2.5
---- !u!114 &1318912437542794372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108295743068136594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e908d5a95cf36384583db01930a3736f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fsm_Player: {}
-  board:
-    transform: {fileID: 5597867981880639016}
-    input: {fileID: 1994737097}
-    playerController: {fileID: 811693682369752431}
-    animController: {fileID: 3275795212970028903}
-    attackManager: {fileID: 1994737102}
-    moveSpeed: 4
-    comboIndex: 0
 --- !u!1 &5266746997574743175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2822,9 +2799,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2746674328086307910, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
         type: 3}
+      propertyPath: collider
+      value: 
+      objectReference: {fileID: 2056461086}
+    - target: {fileID: 2746674328086307910, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+        type: 3}
       propertyPath: swordVFX
       value: 
-      objectReference: {fileID: 9162101308469341378}
+      objectReference: {fileID: 4051251080032182775, guid: cf7b93e203bec6b47af98879e4911680,
+        type: 3}
     - target: {fileID: 4789317738248649211, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
         type: 3}
       propertyPath: m_Name
@@ -2948,15 +2931,15 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 288420933495450423, guid: e3a47310cd0f36947ad7f9345fc1b7bf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e3a47310cd0f36947ad7f9345fc1b7bf, type: 3}
---- !u!4 &6364219872603677992 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5277308054964659009, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+--- !u!65 &2056461086 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 1256086438733995383, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
     type: 3}
   m_PrefabInstance: {fileID: 1256086440706557545}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &9162101308469341378 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7946831815657597611, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
+--- !u!4 &6364219872603677992 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5277308054964659009, guid: e3a47310cd0f36947ad7f9345fc1b7bf,
     type: 3}
   m_PrefabInstance: {fileID: 1256086440706557545}
   m_PrefabAsset: {fileID: 0}

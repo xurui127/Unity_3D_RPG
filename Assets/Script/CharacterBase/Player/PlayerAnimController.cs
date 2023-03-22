@@ -77,6 +77,7 @@ public class PlayerAnimController : AnimController
     public override void OnAttack(int attackCount)
     {
         SetAnimation(animpPreTxts.attackTxt + attackCount.ToString());
+
     }
     public void OnRoll()
     {
