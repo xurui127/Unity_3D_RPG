@@ -17,5 +17,10 @@ namespace SO_PlayerPreTxt
         public string rollTxt;
         public string attackTxt;
         public string sprintTxt;
+
+        public int currentAttackIndex;
+        public int maxAttackIndex;
+        public int minAtttackIndex;
+
     }
 }

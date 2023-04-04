@@ -28,11 +28,11 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-            CharacterRun();
-            //CharacterMove();
-            CharacterRoll();
-            CharacterSprint();
-            CharacterAttack();
+            //CharacterRun();
+            ////CharacterMove();
+            //CharacterRoll();
+            //CharacterSprint();
+            //CharacterAttack();
         }
         #endregion
         #region Charactor Movement
@@ -45,47 +45,47 @@ namespace Player
         {
             transform.rotation = Quaternion.LookRotation(input.moveValue, Vector3.up);
         }
-        private void CharacterRun()
-        {
-            if (input.Move && !animController.IsBusy)
-            {
-                Move();
-                CharacterRoatition();
-            }
+        //private void CharacterRun()
+        //{
+        //    if (input.Move && !animController.IsBusy)
+        //    {
+        //        Move();
+        //        CharacterRoatition();
+        //    }
 
-        }
-        private void CharacterRoll()
-        {
+        //}
+        //private void CharacterRoll()
+        //{
 
-            if (input.Roll && !animController.IsBusy)
-            {
-                animController.RollHaddler();
-            }
-        }
-        private void CharacterAttack()
-        {
-            if (input.Attack && !animController.IsBusy)
-            {
-                if (enemyManager.enemies.Count != 0)
-                {
-                    Enemy target = enemyManager.GetNearestTarget();
-                    if (target != null)
-                    {
+        //    if (input.Roll && !animController.IsBusy)
+        //    {
+        //        animController.RollHaddler();
+        //    }
+        //}
+        //private void CharacterAttack()
+        //{
+        //    if (input.Attack && !animController.IsBusy)
+        //    {
+        //        if (enemyManager.enemies.Count != 0)
+        //        {
+        //            Enemy target = enemyManager.GetNearestTarget();
+        //            if (target != null)
+        //            {
                        
-                    transform.LookAt(target.transform);
-                    }
-                }
-                animController.OnAttack();
+        //            transform.LookAt(target.transform);
+        //            }
+        //        }
+        //        animController.OnAttack();
 
-            }
-        }
-        private void CharacterSprint()
-        {
-            if (input.Sprint && !animController.IsBusy)
-            {
-                animController.SprintHaddler();
-            }
-        }
+        //    }
+        //}
+        //private void CharacterSprint()
+        //{
+        //    if (input.Sprint && !animController.IsBusy)
+        //    {
+        //        animController.SprintHaddler();
+        //    }
+        //}
         #endregion
     }
 }

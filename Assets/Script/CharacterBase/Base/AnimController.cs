@@ -1,3 +1,4 @@
+using PlayerAnimInfo;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -38,10 +39,7 @@ public abstract class AnimController : MonoBehaviour
     {
         anim.SetFloat(paraName, para);
     }
-    protected void SetAnimation(string paraName, NotifyBegin begin)
-    {
-
-    }
+ 
     #endregion
     public abstract  void OnMove(float speed);
 

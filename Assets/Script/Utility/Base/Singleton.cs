@@ -9,14 +9,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
     public static T Instance { get { return instance; } }
     protected virtual void Awake()
     {
-        if (instance != null)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            instance = (T)this;
-        }
+        
     }
 
     public static bool IsInitialize
@@ -32,5 +25,15 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 
-
+    protected virtual void Init()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = (T)this;
+        }
+    }
 }

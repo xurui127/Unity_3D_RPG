@@ -24,3 +24,6 @@ MonoBehaviour:
   rollTxt: roll
   attackTxt: 'attack '
   sprintTxt: sprint
+  currentAttackIndex: 1
+  maxAttackIndex: 3
+  minAtttackIndex: 1
