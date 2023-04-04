@@ -59,28 +59,22 @@ public class PlayerAnimController : AnimController
     {
         AnimDone();
     }
-    #region Combo Anim Haddlers
-
-    private void AttackCount()
-    {
-        if (animpPreTxts.currentAttackIndex > animpPreTxts.maxAttackIndex)
-        {
-            animpPreTxts.currentAttackIndex = animpPreTxts.minAtttackIndex;
-        }
-    }
-
-
-    #endregion
     #region Behaviours Haddlers 
+    #region Move Behaviour
     public override void OnMove(float speed)
     {
         SetAnimation(animpPreTxts.moveTxt, speed);
     }
+    #endregion
+    #region Attack Behaviour 
+    // Called when Attack input clicked 
     public override void OnAttack()
     {
         CastAttack();
     }
-   private void CastAttack()
+    // Called when Attack input clicked 
+
+    private void CastAttack()
     {
         if (IsBusy)
         {
@@ -89,40 +83,58 @@ public class PlayerAnimController : AnimController
         AttackCount();
         SetAnimation(animpPreTxts.attackTxt + animpPreTxts.currentAttackIndex.ToString(), OnAttackBegin,OnAttackEnd, OnAttackDone);
     }
+    // Reset AttackIndex
+    private void AttackCount()
+    {
+        if (animpPreTxts.currentAttackIndex > animpPreTxts.maxAttackIndex)
+        {
+            animpPreTxts.currentAttackIndex = animpPreTxts.minAtttackIndex;
+        }
+    }
+    // Attack Animation Start 
     private void OnAttackBegin()
     {
         animpPreTxts.currentAttackIndex++;
         IsBusy = true;
     }
-  
+
+    // Attack Animation finish without any input 
     private void OnAttackEnd()
     {
         animpPreTxts.currentAttackIndex = animpPreTxts.minAtttackIndex;
     }
+    // Attack animation Finish
     private void OnAttackDone()
     {
         IsBusy = false;
-        Debug.Log("IN done");
     }
-
+    #endregion
+    #region Roll Behaviour
     public void RollHaddler()
     {
 
         SetAnimation(animpPreTxts.rollTxt);
 
     }
+    #endregion
+    #region Sprint Behaviour
     public void SprintHaddler()
     {
         SetAnimation(animpPreTxts.sprintTxt);
     }
+    #endregion
+    #region Hit Behaviour
     public override void GetHit()
     {
 
     }
+    #endregion
+    #region Death Behaviour
     protected override void Dead()
     {
 
     }
+    #endregion
     public void StartColldier()
     {
         curWeapon.StartCollider.Invoke();
