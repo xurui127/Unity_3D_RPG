@@ -46,23 +46,6 @@ public class PlayerController : MonoBehaviour
 
     private void InputHandler()
     {
-        //if (input.Move && !animController.IsBusy)
-        //{
-        //    move.Execute(board);
-        //    rotation.Execute(board);
-        //}
-        //if (input.Roll && !animController.IsBusy)
-        //{
-        //    roll.Execute(board);
-        //}
-        //if (input.Attack && !animController.IsBusy)
-        //{
-        //    attack.Execute(board);
-        //}
-        //if (input.Sprint && !animController.IsBusy)
-        //{
-        //    sprint.Execute(board);
-        //}
         if (input.Move)
         {
             move.Execute(board);

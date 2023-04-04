@@ -6,6 +6,7 @@ using PlayerAnimInfo;
 using UnityExtension;
 using UnityEngine.Rendering.Universal;
 using Unity.VisualScripting.Antlr3.Runtime;
+using Unity.VisualScripting;
 
 public class PlayerAnimController : AnimController
 {
@@ -20,13 +21,9 @@ public class PlayerAnimController : AnimController
 
     private GameObject weapon;
     private WeaponHaddler curWeapon;
+    private GameObject curVFX;
 
     public bool IsBusy { get; private set; }
-
-    //private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
-    //public bool IsBusy => isBusy;
-   
-
 
     protected override void Start()
     {
@@ -94,8 +91,12 @@ public class PlayerAnimController : AnimController
     // Attack Animation Start 
     private void OnAttackBegin()
     {
+
         animpPreTxts.currentAttackIndex++;
         IsBusy = true;
+        // Current VFX Setting
+        curVFX = PoolManager.Release(curWeapon.swordVFX, weapon.transform.position);
+        curVFX.transform.SetParent(curWeapon.transform);
     }
 
     // Attack Animation finish without any input 
@@ -107,6 +108,8 @@ public class PlayerAnimController : AnimController
     private void OnAttackDone()
     {
         IsBusy = false;
+        // If Attack animtion finish Destroy Current VFX
+        Destroy(curVFX);
     }
     #endregion
     #region Roll Behaviour

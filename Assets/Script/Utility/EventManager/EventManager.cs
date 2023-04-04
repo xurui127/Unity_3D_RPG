@@ -9,7 +9,7 @@ public class EventManager : Singleton<EventManager>
 {
     Dictionary<NotityState,UnityAction> notifyList;
 
-    protected override void Awake()
+    protected  void Awake()
     {
         Init();
     }
