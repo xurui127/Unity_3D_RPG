@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SkeletonAnimController : AnimController
 {
-    public string moveTxt = "Locomotion";
-    public string move = "speed";
-    public string attackTxt = "attacks";
+    //public string moveTxt = "Locomotion";
+    //public string move = "speed";
+    //public string attackTxt = "attacks";
+
+
+    [SerializeField] private SkeletonPreTxts_SO skeletonPreTxt;
 
     protected override void Start()
     {
@@ -15,13 +18,13 @@ public class SkeletonAnimController : AnimController
 
     public override void OnMove(float speed)
     {
-        SetAnimation(move, speed);
+        SetAnimation(skeletonPreTxt.moveTxt, speed);
     }
 
     public override void OnAttack()
     {
         int randomAttack = Random.Range(1, 2);
-        SetAnimation(attackTxt + randomAttack);
+        SetAnimation(skeletonPreTxt.attackTxt + randomAttack);
     }
     public override void GetHit()
     {

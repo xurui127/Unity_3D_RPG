@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfab1b133dd09f0419f847a904df776d, type: 3}
-  m_Name: SwordWeapon
+  m_Script: {fileID: 11500000, guid: a16870e12a188a146bd0a24f9f4cb728, type: 3}
+  m_Name: SkeletonPreTxt_SO
   m_EditorClassIdentifier: 
-  effect: {fileID: 4051251080032182775, guid: cf7b93e203bec6b47af98879e4911680, type: 3}
-  AttackIndex: 0
-  AttackDMG:
-  - 5
-  - 8
-  - 10
+  idleTxt: Locomotion
+  moveTxt: movespeed
+  attackTxt: attacks
+  deadTxt: dead

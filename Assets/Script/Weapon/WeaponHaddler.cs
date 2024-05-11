@@ -10,9 +10,12 @@ public class WeaponHaddler : MonoBehaviour
 
     public Collider collider;
     private float colliderWaitingTime = 0.1f;
+    [SerializeField]public GameObject swordVFX;
+    [SerializeField]private WeaponSO weapon;
     [HideInInspector]
     public UnityEvent StartCollider = new UnityEvent();
-    public GameObject swordVFX;
+    
+
     public void Start()
     {
 
@@ -21,19 +24,6 @@ public class WeaponHaddler : MonoBehaviour
         {
             StartCollider.AddListener(OnColliderStart);
         }
-    }
-
-    public void EnableVFX()
-    {
-        swordVFX.SetActive(true);
-    }
-    public void DisableVFX()
-    {
-        swordVFX.SetActive(false);
-    }
-    public void OnAnimStart()
-    {
-
     }
     public void OnColliderStart()
     {

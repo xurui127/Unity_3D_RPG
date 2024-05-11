@@ -4,6 +4,8 @@ using UnityEngine;
 public class WeaponSO : ScriptableObject
 {
     [Header("Compoments")]
+    public GameObject gameObject;
+    public Collider collider;
     public GameObject effect;
 
     [Space][Space][Space]

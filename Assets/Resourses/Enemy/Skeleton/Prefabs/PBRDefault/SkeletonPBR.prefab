@@ -296,7 +296,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1088474434442572}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 2.5
   m_Height: 1.8
   m_Direction: 1
@@ -310,7 +310,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1088474434442572}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.9
   m_Height: 1.8
   m_Direction: 1
@@ -361,10 +361,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae677007e55dbb46b4dc448098b8c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fsm_Skeleton:
+    board:
+      anim: {fileID: 0}
+      agent: {fileID: 0}
+      target: {fileID: 0}
   board:
+    anim: {fileID: 0}
     agent: {fileID: 1620417005}
     target: {fileID: 0}
-    anim: {fileID: 1620417014}
+    animController: {fileID: 0}
 --- !u!114 &1620417014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,9 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b81eff3be5a35c245b4d90337e2b91c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTxt: Locomotion
-  move: speed
-  attackTxt: Attacks
+  skeletonPreTxt: {fileID: 0}
 --- !u!114 &1620417016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2287,7 +2291,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 759062047768449900}
-  - component: {fileID: 6955562477932733932}
+  - component: {fileID: 5592171709439625255}
   m_Layer: 0
   m_Name: Damagable
   m_TagString: EnemyDamagable
@@ -2303,24 +2307,23 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3476471958867062996}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4333204578251230}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6955562477932733932
-CapsuleCollider:
+--- !u!65 &5592171709439625255
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3476471958867062996}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 1
-  m_Height: 0.53
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.87, z: 0}
+  serializedVersion: 2
+  m_Size: {x: 0.9465832, y: 1.6868339, z: 0.89625794}
+  m_Center: {x: 0.002428025, y: -0.07284117, z: 0.10197762}

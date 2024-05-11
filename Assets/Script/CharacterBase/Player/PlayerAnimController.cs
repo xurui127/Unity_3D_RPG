@@ -60,6 +60,7 @@ public class PlayerAnimController : AnimController
     #region Move Behaviour
     public override void OnMove(float speed)
     {
+
         SetAnimation(animpPreTxts.moveTxt, speed);
     }
     #endregion

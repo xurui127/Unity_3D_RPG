@@ -6,8 +6,8 @@ public class PlayerInputSystem : MonoBehaviour
 
     Vector2 axes => playerInputActions.GamePlay.Move.ReadValue<Vector2>();
     Vector2 smoothInputVelocity;
-    [SerializeField]float smoothSpeed = 0.05f;
     Vector2 smoothInput;
+    [SerializeField]float smoothSpeed = 0.05f;
     public float Horizontal => GetSmoothInput().x;
     public float Vertical => GetSmoothInput().y;
     public bool Move => Mathf.Abs(GetSmoothInput().x) > 0.1f|| Mathf.Abs(GetSmoothInput().y) > 0.1f;

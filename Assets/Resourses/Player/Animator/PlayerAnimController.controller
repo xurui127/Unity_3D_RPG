@@ -48,17 +48,17 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -5688458802392608612}
-    m_Position: {x: 550, y: -140, z: 0}
+    m_Position: {x: 450, y: -170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2449098795334388536}
-    m_Position: {x: 270, y: -80, z: 0}
+    m_Position: {x: 310, y: -70, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -463458193868864882}
-    m_Position: {x: 270, y: -10, z: 0}
+    m_Position: {x: 190, y: -180, z: 0}
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -7618369799666950227}
-    m_Position: {x: 270, y: -250, z: 0}
+    m_Position: {x: 300, y: -350, z: 0}
   m_AnyStateTransitions:
   - {fileID: 8300857105250064618}
   - {fileID: 7393405163435244616}
@@ -70,9 +70,9 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours:
   - {fileID: 5306000873866797968}
-  m_AnyStatePosition: {x: 80, y: -150, z: 0}
+  m_AnyStatePosition: {x: 30, y: -90, z: 0}
   m_EntryPosition: {x: 580, y: -350, z: 0}
-  m_ExitPosition: {x: 590, y: 50, z: 0}
+  m_ExitPosition: {x: 590, y: -10, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -5688458802392608612}
 --- !u!1107 &-7618369799666950227
@@ -111,7 +111,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SwordAndShield_Combo02
-  m_Speed: 1.6
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1450219677832737479}
@@ -269,7 +269,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SwordAndShield_Combo03
-  m_Speed: 1.6
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -340986654441748281}
@@ -296,7 +296,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: SwordAndShield_Combo01
-  m_Speed: 1.6
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -2392723111642002713}

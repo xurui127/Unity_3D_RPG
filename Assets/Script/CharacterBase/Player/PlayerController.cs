@@ -2,6 +2,7 @@ using NPC_Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
@@ -46,8 +47,12 @@ public class PlayerController : MonoBehaviour
 
     private void InputHandler()
     {
-        if (input.Move)
+        if (input.Move )
         {
+            if (animController.IsBusy)
+            {
+                return;
+            }
             move.Execute(board);
             rotation.Execute(board);
         }

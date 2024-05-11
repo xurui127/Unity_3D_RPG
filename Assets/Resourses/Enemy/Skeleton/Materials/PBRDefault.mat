@@ -11,8 +11,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 2a230514c860643f69b6a4d1871d3825, type: 3}
   m_ValidKeywords:
   - DR_ENABLE_LIGHTMAP_DIR
+  - DR_GRADIENT_ON
   - DR_OUTLINE_ON
-  - DR_RIM_ON
   - _DETAILMAPBLENDINGMODE_MULTIPLY
   - _RECEIVE_SHADOWS_OFF
   - _TEXTUREBLENDINGMODE_MULTIPLY
@@ -22,7 +22,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap:
     RenderType: Opaque
   disabledShaderPasses: []
@@ -117,7 +117,7 @@ Material:
     - _GradientAngle: 61
     - _GradientCenterX: 0
     - _GradientCenterY: 0
-    - _GradientEnabled: 0
+    - _GradientEnabled: 1
     - _GradientSize: 10
     - _LightContribution: 0.502
     - _LightmapDirectionPitch: 0
@@ -135,7 +135,7 @@ Material:
     - _Parallax: 0.02
     - _QueueOffset: 0
     - _ReceiveShadows: 0
-    - _RimEnabled: 1
+    - _RimEnabled: 0
     - _SelfShadingSize: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularEnabled: 0
@@ -151,7 +151,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorGradient: {r: 0.44339618, g: 0.4371217, b: 0.4371217, a: 0.85056}
+    - _ColorGradient: {r: 0.7735849, g: 0.71155214, b: 0.71155214, a: 0.85056}
     - _DetailMapColor: {r: 1, g: 0.9575471, b: 0.9575471, a: 1}
     - _EmissionColor: {r: 1, g: 0.5586207, b: 0, a: 1}
     - _FlatRimColor: {r: 0.62942827, g: 0.62942827, b: 0.62942827, a: 0.69411767}

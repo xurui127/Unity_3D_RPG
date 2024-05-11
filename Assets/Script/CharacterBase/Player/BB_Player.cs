@@ -11,7 +11,6 @@ namespace NPC_Player
         public CharacterController playerController;
         public PlayerAnimController animController;
         public PlayerAttackManager attackManager;
-
         public float moveSpeed;
 
         public BB_Player(Transform transform,PlayerInputSystem input, CharacterController playerController, PlayerAnimController animController, PlayerAttackManager attackManager, float moveSpeed)

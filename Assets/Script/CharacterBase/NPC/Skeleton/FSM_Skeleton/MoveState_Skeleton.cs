@@ -20,6 +20,7 @@ public class MoveState_Skeleton<T> : IState where T : BB_Skeleton
         //fSM_Enemy.board.agent.SetDestination(fSM_Enemy.board.target.transform.position);
         this.board.agent.SetDestination(board.target.transform.position);
         this.board.animController.OnMove(1.0f);
+        
        
     }
 
@@ -33,6 +34,10 @@ public class MoveState_Skeleton<T> : IState where T : BB_Skeleton
         if (Input.GetKeyDown("1"))
         {
             fSM_Enemy.SwitchState(StateType.MOVE, fSM_Enemy,board);
+        }
+        if (Input.GetKeyDown("2"))
+        {
+            fSM_Enemy.SwitchState(StateType.HIT, fSM_Enemy, board);
         }
     }
 }
