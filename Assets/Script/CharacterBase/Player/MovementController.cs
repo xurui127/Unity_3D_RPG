@@ -34,6 +34,7 @@ namespace Player
             attackManager = GetComponent<PlayerAttackManager>();
             //enemyManager= GetComponent<EnemyManager>();
             input.EnableGamePlayInputs();
+           
         }
 
         // Update is called once per frame
