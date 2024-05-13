@@ -55,7 +55,7 @@ namespace AI_Enemy
             curState.OnEnter(fSM_Enemy);
         }
 
-        public void OnUpdate(FSM_Enemy fSM_Enemy)
+        public virtual void OnUpdate(FSM_Enemy fSM_Enemy)
         {
             curState.OnUpdate(fSM_Enemy);
         }

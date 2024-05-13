@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 namespace Player
 {
@@ -9,8 +10,18 @@ namespace Player
         private CharacterController playerController;
         private PlayerAnimController animController;
         private PlayerAttackManager attackManager;
-       [SerializeField] private EnemyManager enemyManager;
+        [SerializeField] private EnemyManager enemyManager;
+
+
+        private float smoothSpeed = 0.05f;
+        private float rotateSpeed = 0.05f;
         private float speed = 4f;
+
+      
+        private Vector2 smoothInputVelocity;
+        private Vector2 adjustedDirection;
+        private Vector3 moveValue => new Vector3(GetSmoothInput().x, 0, GetSmoothInput().y);
+
         #region System Function
 
 
@@ -29,25 +40,31 @@ namespace Player
         void Update()
         {
             CharacterRun();
-            //CharacterMove();
+            CharacterMove();
             CharacterRoll();
             CharacterSprint();
             CharacterAttack();
         }
         #endregion
         #region Charactor Movement
+        private Vector2 GetSmoothInput()
+        {
+            var movementDirction = input.axes;
+            adjustedDirection = Vector2.SmoothDamp(adjustedDirection, movementDirction, ref smoothInputVelocity, smoothSpeed);
+            return adjustedDirection;
+        }
         private void CharacterMove()
         {
-            animController.SetAnimation("speed", input.moveValue.magnitude);
-            playerController.Move(input.moveValue * speed * Time.deltaTime);
+            animController.SetAnimation("speed", moveValue.magnitude);
+            playerController.Move(moveValue * speed * Time.deltaTime);
         }
         private void CharacterRoatition()
         {
-            transform.rotation = Quaternion.LookRotation(input.moveValue, Vector3.up);
+            transform.rotation = Quaternion.LookRotation(input.moveValue,Vector3.zero);
         }
         private void CharacterRun()
         {
-            if (input.Move && !animController.IsBusy)
+            if (input.isMove && !animController.IsBusy)
             {
                 CharacterMove();
                 CharacterRoatition();
@@ -57,23 +74,22 @@ namespace Player
         private void CharacterRoll()
         {
 
-            if (input.Roll && !animController.IsBusy)
+            if (input.isRoll && !animController.IsBusy)
             {
                 animController.RollHaddler();
             }
         }
         private void CharacterAttack()
         {
-            if (input.Attack && !animController.IsBusy)
+            if (input.isAttack && !animController.IsBusy)
             {
                 if (enemyManager.enemies.Count != 0)
                 {
                     Enemy target = enemyManager.GetNearestTarget();
-                    Debug.Log(enemyManager.GetNearestTarget());
+                    // Debug.Log(enemyManager.GetNearestTarget());
                     if (target != null)
                     {
-                       
-                    transform.LookAt(target.transform);
+                        transform.LookAt(target.transform);
                     }
                 }
                 animController.AttackHaddler();
@@ -82,7 +98,7 @@ namespace Player
         }
         private void CharacterSprint()
         {
-            if (input.Sprint && !animController.IsBusy)
+            if (input.isSprint && !animController.IsBusy)
             {
                 animController.SprintHaddler();
             }
