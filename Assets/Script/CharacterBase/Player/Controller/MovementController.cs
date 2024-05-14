@@ -46,7 +46,6 @@ namespace Player
             CharacterRoll();
             CharacterSprint();
             CharacterAttack();
-            //moveValue = new Vector3(SmoothInput(input.axes).x, 0, SmoothInput(input.axes).y);
         }
         #endregion
         #region Charactor Movement
