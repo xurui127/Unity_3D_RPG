@@ -1,19 +1,30 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 namespace Player
 {
     public class MovementController : MonoBehaviour
     {
+        // Refences
         private PlayerInputSystem input;
         private CharacterController playerController;
         private PlayerAnimController animController;
         private PlayerAttackManager attackManager;
-       [SerializeField] private EnemyManager enemyManager;
+        [SerializeField] private EnemyManager enemyManager;
+      
+
+        
+        private Vector2 smoothInputVelocity;
+        private Vector2 smoothInput;
+        private float smoothSpeed = 0.1f;
+        private Vector3 moveValue;
         private float speed = 4f;
         #region System Function
-
-
+        
+        
+        
         // Start is called before the first frame update
         void Start()
         {
@@ -24,26 +35,28 @@ namespace Player
             //enemyManager= GetComponent<EnemyManager>();
             input.EnableGamePlayInputs();
         }
-
+        private void SmoothInput()
+        {
+            smoothInput = Vector2.SmoothDamp(smoothInput, input.axes, ref smoothInputVelocity, smoothSpeed);
+        }
         // Update is called once per frame
         void Update()
         {
             CharacterRun();
-            //CharacterMove();
             CharacterRoll();
             CharacterSprint();
             CharacterAttack();
+            //moveValue = new Vector3(SmoothInput(input.axes).x, 0, SmoothInput(input.axes).y);
         }
         #endregion
         #region Charactor Movement
         private void Move()
         {
-            animController.OnMove(input.moveValue.magnitude);
-            playerController.Move(input.moveValue * speed * Time.deltaTime);
+            playerController.Move(moveValue * speed * Time.deltaTime);
         }
         private void CharacterRoatition()
         {
-            transform.rotation = Quaternion.LookRotation(input.moveValue, Vector3.up);
+            transform.rotation = Quaternion.LookRotation(moveValue, Vector3.up);
         }
         private void CharacterRun()
         {
@@ -52,7 +65,9 @@ namespace Player
                 Move();
                 CharacterRoatition();
             }
-
+            SmoothInput();
+            moveValue = new Vector3(smoothInput.x, 0, smoothInput.y);
+            animController.OnMove(moveValue.magnitude);
         }
         private void CharacterRoll()
         {

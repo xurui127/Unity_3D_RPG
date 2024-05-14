@@ -1,38 +1,32 @@
 using UnityEngine;
+using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 public class PlayerInputSystem : MonoBehaviour
 {
     PlayerInputActions playerInputActions;
 
-    Vector2 axes => playerInputActions.GamePlay.Move.ReadValue<Vector2>();
-    Vector2 smoothInputVelocity;
-    [SerializeField]float smoothSpeed = 0.05f;
-    Vector2 smoothInput;
-    public float Horizontal => GetSmoothInput().x;
-    public float Vertical => GetSmoothInput().y;
-    public bool Move => Mathf.Abs(GetSmoothInput().x) > 0.1f|| Mathf.Abs(GetSmoothInput().y) > 0.1f;
-    public Vector3 moveValue => new Vector3(GetSmoothInput().x, 0, GetSmoothInput().y);
+    public Vector2 axes => playerInputActions.GamePlay.Move.ReadValue<Vector2>();
+    public bool Move => Mathf.Abs(axes.magnitude) > 0.1f;
     public bool Attack => playerInputActions.GamePlay.Attack.WasPressedThisFrame();
     public bool Roll => playerInputActions.GamePlay.Roll.WasPressedThisFrame();
-
     public bool Sprint => playerInputActions.GamePlay.Sprint.WasPressedThisFrame();
 
-
-    //public bool Move => axes.x != 0 || axes.y != 0;
-   // public bool Move =>playerInputActions.GamePlay.Move.WasPressedThisFrame();
     private void Awake()
     {
-        playerInputActions = new PlayerInputActions();   
+        playerInputActions = new PlayerInputActions();
     }
     public void EnableGamePlayInputs()
     {
         playerInputActions.GamePlay.Enable();
     }
 
-    private Vector2 GetSmoothInput()
-    {
-        smoothInput = Vector2.SmoothDamp(smoothInput, axes, ref smoothInputVelocity, smoothSpeed);
-        return smoothInput;
-    }
-
 }
+//public Vector3 axesValue => new Vector3(SmoothInput().x, 0, SmoothInput().y);
+//private Vector2 smoothInputVelocity;
+//private Vector2 smoothInput;
+//private float smoothSpeed = 0.5f;
+//private Vector2 SmoothInput()
+//{
+//    smoothInput = Vector2.SmoothDamp(smoothInput, axes, ref smoothInputVelocity, smoothSpeed);
+//    return smoothInput;
+//}
