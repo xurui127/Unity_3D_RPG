@@ -19,6 +19,10 @@ public class PlayerInputSystem : MonoBehaviour
     {
         playerInputActions.GamePlay.Enable();
     }
+    public Vector2 GetAxesValue()
+    {
+        return axes;
+    }
 
 }
 //public Vector3 axesValue => new Vector3(SmoothInput().x, 0, SmoothInput().y);

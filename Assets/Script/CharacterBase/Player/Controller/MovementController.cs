@@ -13,18 +13,18 @@ namespace Player
         private PlayerAnimController animController;
         private PlayerAttackManager attackManager;
         [SerializeField] private EnemyManager enemyManager;
-      
 
-        
+
+        private Vector3 moveValue;
         private Vector2 smoothInputVelocity;
         private Vector2 smoothInput;
         private float smoothSpeed = 0.1f;
-        private Vector3 moveValue;
         private float speed = 4f;
+
+
+
+
         #region System Function
-        
-        
-        
         // Start is called before the first frame update
         void Start()
         {
@@ -37,15 +37,19 @@ namespace Player
         }
         private void SmoothInput()
         {
-            smoothInput = Vector2.SmoothDamp(smoothInput, input.axes, ref smoothInputVelocity, smoothSpeed);
+            smoothInput = Vector2.SmoothDamp(smoothInput, input.GetAxesValue(), ref smoothInputVelocity, smoothSpeed);
         }
         // Update is called once per frame
         void Update()
         {
-            CharacterRun();
+
             CharacterRoll();
             CharacterSprint();
             CharacterAttack();
+        }
+        private void FixedUpdate()
+        {
+            CharacterRun();
         }
         #endregion
         #region Charactor Movement
@@ -85,8 +89,8 @@ namespace Player
                     Enemy target = enemyManager.GetNearestTarget();
                     if (target != null)
                     {
-                       
-                    transform.LookAt(target.transform);
+
+                        transform.LookAt(target.transform);
                     }
                 }
                 animController.OnAttack();
