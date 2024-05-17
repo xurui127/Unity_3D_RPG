@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class FuncPredicate : IPredicate
 {
-    readonly Func<bool> func;
-  
+    private Func<bool> func;
     public FuncPredicate(Func<bool> func)
     {
         this.func = func;

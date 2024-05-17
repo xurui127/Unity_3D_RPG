@@ -25,6 +25,10 @@ namespace Player
 
 
         #region System Function
+        private void Awake()
+        {
+             
+        }
         // Start is called before the first frame update
         void Start()
         {

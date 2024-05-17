@@ -5,11 +5,7 @@ using UnityEngine;
 
 public class BaseState : IState
 {
-    public void FixedUpdate()
-    {
-      
-    }
-
+  
     public void OnCheck()
     {
 
@@ -17,12 +13,17 @@ public class BaseState : IState
 
     public void OnEnter()
     {
-
+            
     }
 
     public void OnExit()
     {
 
+    }
+
+    public void OnFixedUpdate()
+    {
+       
     }
 
     public void OnUpdate()

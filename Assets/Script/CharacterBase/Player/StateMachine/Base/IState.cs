@@ -6,11 +6,13 @@ namespace AI_Enemy
 {
     public interface IState
     {
-        public void OnEnter();
-        public void OnExit();
-        public void OnUpdate();
-        public void FixedUpdate();
-        public void OnCheck();
+        void OnEnter();
+        void OnExit();
+        void OnUpdate();
+        void OnFixedUpdate();
+        void OnCheck();
 
     }
+
+    
 }

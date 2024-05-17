@@ -17,9 +17,9 @@ public abstract class AnimController : MonoBehaviour
     //Start is called before the first frame update
     protected virtual void Start()
     {
-        anim = GetComponent<Animator>();
-
+        anim = GetComponent<Animator>(); 
     }
+    
     #endregion
     #region Animations Function
     public void SetAnimation(string paraName)

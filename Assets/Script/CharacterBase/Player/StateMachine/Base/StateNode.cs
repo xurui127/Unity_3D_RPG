@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateNode
+public class StateNode 
 {
-    public IState state { get; }
-    public HashSet<ITransition> transitions { get; }
+   public IState state;
+   public HashSet<ITransition> transitions;
 
     public StateNode(IState state)
     {
@@ -14,9 +14,8 @@ public class StateNode
         transitions = new HashSet<ITransition>();
     }
 
-    public void AddTransition(IState state,IPredicate condition)
+    public void AddTransition(IState to,IPredicate condition)
     {
-        transitions.Add(new Transition(state, condition));
+        transitions.Add(new Transition(to, condition));
     }
-
 }
