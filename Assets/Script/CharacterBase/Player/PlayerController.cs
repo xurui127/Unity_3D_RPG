@@ -1,18 +1,16 @@
 using NPC_Player;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-  
+
     private PlayerInputSystem input;
     private CharacterController playerController;
     private PlayerAnimController animController;
     private PlayerAttackManager attackManager;
     //private EnemyManager enemyManager;
     //public float speed = 4f;
-    
+
 
     // Player movement actions 
     public BB_Player board;

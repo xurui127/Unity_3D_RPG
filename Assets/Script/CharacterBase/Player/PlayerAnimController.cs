@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using SO_PlayerPreTxt;
 using UnityEngine;
 using UnityEngine.Events;
-using SO_PlayerPreTxt;
-using Unity.VisualScripting;
 using Utility;
-using Unity.PlasticSCM.Editor.WebApi;
-using UnityEditor.Build;
 
 public class PlayerAnimController : AnimController
 {
@@ -16,19 +11,19 @@ public class PlayerAnimController : AnimController
     [SerializeField] private float comboCancletime;
     private GameObject weapon;
     private WeaponHaddler curWeapon;
-   
+
 
 
     private bool isBusy => (!curAnimInfo.IsName(animpPreTxts.preTxt[0]) ? true : false);
     public bool IsBusy => isBusy;
     private UnityEvent HitCounting;
     private UnityEvent CheckLastAnim;
-  
+
 
     protected override void Start()
     {
         base.Start();
-       // animpPreTxts = new PlayerAnimPreTxt_SO();
+        // animpPreTxts = new PlayerAnimPreTxt_SO();
         if (HitCounting == null)
         {
             HitCounting = new UnityEvent();
@@ -39,7 +34,7 @@ public class PlayerAnimController : AnimController
             CheckLastAnim = new UnityEvent();
         }
         weapon = GameObjectFinder.FindChild(this.gameObject, "sword01");
-        if(weapon != null)
+        if (weapon != null)
         {
             curWeapon = weapon.GetComponent<WeaponHaddler>();
         }
@@ -55,9 +50,9 @@ public class PlayerAnimController : AnimController
     {
 
         curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
-        if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString())&& curAnimInfo.normalizedTime < 1f)
+        if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime < 1f)
         {
-                curWeapon.EnableVFX();
+            curWeapon.EnableVFX();
         }
         if (LastAnimInfo.normalizedTime >= 1f)
         {
@@ -108,11 +103,11 @@ public class PlayerAnimController : AnimController
     }
     public override void GetHit()
     {
-       
+
     }
     protected override void Dead()
     {
-       
+
     }
     public void StartColldier()
     {

@@ -1,6 +1,5 @@
 using NPC_Player;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 
 public class Move : Commend
 {

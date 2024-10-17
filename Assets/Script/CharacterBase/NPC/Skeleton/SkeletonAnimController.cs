@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SkeletonAnimController : AnimController
@@ -25,11 +23,11 @@ public class SkeletonAnimController : AnimController
     }
     public override void GetHit()
     {
-        SetAnimation("gethit"); 
+        SetAnimation("gethit");
     }
     protected override void Dead()
     {
-        
+
     }
 }
 

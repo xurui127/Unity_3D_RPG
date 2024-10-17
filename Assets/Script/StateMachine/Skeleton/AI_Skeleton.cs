@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using AI_Enemy;
-using UnityEngine.UI;
-using UnityEngine.Rendering.Universal;
+using UnityEngine;
 
 public class AI_Skeleton : MonoBehaviour
 {
@@ -17,19 +13,19 @@ public class AI_Skeleton : MonoBehaviour
         fsm_Skeleton.AddState(StateType.IDLE, new IdleState_Skeleton<BB_Skeleton>(board));
         fsm_Skeleton.AddState(StateType.MOVE, new MoveState_Skeleton<BB_Skeleton>(board));
         fsm_Skeleton.AddState(StateType.HIT, new HitState_Skeleton<BB_Skeleton>(board));
-        fsm_Skeleton.SwitchState(StateType.IDLE,fsm_Skeleton,board);
+        fsm_Skeleton.SwitchState(StateType.IDLE, fsm_Skeleton, board);
     }
 
     // Update is called once per frame
     void Update()
     {
-        fsm_Skeleton.OnUpdate(fsm_Skeleton,board);
+        fsm_Skeleton.OnUpdate(fsm_Skeleton, board);
     }
     private void OnTriggerEnter(Collider other)
     {
         foreach (var col in other.GetComponents<Collider>())
         {
-            if (col.gameObject.tag=="Weapon")
+            if (col.gameObject.tag == "Weapon")
             {
                 fsm_Skeleton.SwitchState(StateType.HIT, fsm_Skeleton, board);
             }
