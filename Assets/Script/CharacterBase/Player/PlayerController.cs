@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController playerController;
     private PlayerAnimController animController;
     private PlayerAttackManager attackManager;
-    private EnemyManager enemyManager;
+    //private EnemyManager enemyManager;
     //public float speed = 4f;
     
 

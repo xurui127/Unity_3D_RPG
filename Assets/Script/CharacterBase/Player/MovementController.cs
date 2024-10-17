@@ -9,7 +9,7 @@ namespace Player
         public CharacterController playerController;
         public PlayerAnimController animController;
         public PlayerAttackManager attackManager;
-        [SerializeField] private EnemyManager enemyManager;
+        //[SerializeField] private EnemyManager enemyManager;
         public float speed = 4f;
         #region System Function
 
@@ -64,20 +64,20 @@ namespace Player
         }
         private void CharacterAttack()
         {
-            if (input.Attack && !animController.IsBusy)
-            {
-                if (enemyManager.enemies.Count != 0)
-                {
-                    Enemy target = enemyManager.GetNearestTarget();
-                    if (target != null)
-                    {
+            //if (input.Attack && !animController.IsBusy)
+            //{
+            //    if (enemyManager.enemies.Count != 0)
+            //    {
+            //        Enemy target = enemyManager.GetNearestTarget();
+            //        if (target != null)
+            //        {
                        
-                    transform.LookAt(target.transform);
-                    }
-                }
-                animController.OnAttack();
+            //        transform.LookAt(target.transform);
+            //        }
+            //    }
+            //    animController.OnAttack();
 
-            }
+            //}
         }
         private void CharacterSprint()
         {

@@ -7,11 +7,11 @@ using UnityEngine;
 public class PlayerAttackManager : MonoBehaviour
 {
     [SerializeField] float gizmosSize;
-    [SerializeField] public List<Enemy> enemies;
-    [SerializeField] Enemy target;
+    //[SerializeField] public List<Enemy> enemies;
+    //[SerializeField] Enemy target;
     [SerializeField] float minDis = 2f;
     
-    public Enemy Target => target;
+   // public Enemy Target => target;
 
     private CharacterController characterController;
     private void OnDrawGizmosSelected()
@@ -23,22 +23,22 @@ public class PlayerAttackManager : MonoBehaviour
     {
  
     }
-    void AddEnemyToList(Collider co)
-    {
-        if ( co.TryGetComponent<Enemy>(out Enemy enemy)&& !enemies.Contains(enemy))
-        {
+    //void AddEnemyToList(Collider co)
+    //{
+    //    if ( co.TryGetComponent<Enemy>(out Enemy enemy)&& !enemies.Contains(enemy))
+    //    {
             
-            enemies.Add(enemy); 
+    //        enemies.Add(enemy); 
 
-        }
-    }
-    void RemoveEnemyToList(Collider co)
-    {
-        if (co.TryGetComponent<Enemy>(out Enemy enemy) && enemies.Contains(enemy))
-        {
-            enemies.Remove(enemy);
-        }
-    }
+    //    }
+    //}
+    //void RemoveEnemyToList(Collider co)
+    //{
+    //    if (co.TryGetComponent<Enemy>(out Enemy enemy) && enemies.Contains(enemy))
+    //    {
+    //        enemies.Remove(enemy);
+    //    }
+    //}
     
     //private void OnTriggerEnter(Collider co) => AddEnemyToList(co);
     ////private void OnTriggerStay(Collider co) => AddEnemyToList(co);
