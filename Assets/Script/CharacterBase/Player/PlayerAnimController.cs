@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using SO_PlayerPreTxt;
 using UnityEngine;
 using UnityEngine.Events;
-using SO_PlayerPreTxt;
 
 public class PlayerAnimController : AnimController
 {
-
     [SerializeField] private PlayerAnimPreTxt_SO animpPreTxts;
     [Range(0f, 1f)]
     [SerializeField] private float comboCancletime;
@@ -16,12 +13,12 @@ public class PlayerAnimController : AnimController
     public bool IsBusy => isBusy;
     private UnityEvent HitCounting;
     private UnityEvent CheckLastAnim;
-  
+
 
     protected override void Start()
     {
         base.Start();
-       // animpPreTxts = new PlayerAnimPreTxt_SO();
+        // animpPreTxts = new PlayerAnimPreTxt_SO();
         if (HitCounting == null)
         {
             HitCounting = new UnityEvent();
@@ -35,15 +32,12 @@ public class PlayerAnimController : AnimController
     private void Update()
     {
         ComboHaddler();
-        //Debug.Log(attackPreAnimTxt + hitCount.ToString());
     }
 
     #region Combo Anim Haddlers
     public void ComboHaddler()
     {
-
         curAnimInfo = anim.GetCurrentAnimatorStateInfo(0);
-
 
         if (curAnimInfo.IsName(animpPreTxts.attackPreAnimTxt + attackCount.ToString()) && curAnimInfo.normalizedTime >= 0.5f && curAnimInfo.normalizedTime <= 1f)
         {
@@ -93,7 +87,7 @@ public class PlayerAnimController : AnimController
 
     protected override void Dead()
     {
-       
+
     }
     #endregion
 }

@@ -1,34 +1,24 @@
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Rendering.Universal;
-using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
-
+﻿using UnityEngine;
 namespace Player
 {
     public class MovementController : MonoBehaviour
     {
         // Refences
+        [Header("Refences")]
         private PlayerInputSystem input;
         private CharacterController playerController;
         private PlayerAnimController animController;
         private PlayerAttackManager attackManager;
-        [SerializeField] private EnemyManager enemyManager;
+        // [SerializeField] private EnemyManager enemyManager;
 
-
+        [Header("Movements")]
         private Vector3 moveValue;
         private Vector2 smoothInputVelocity;
         private Vector2 smoothInput;
         private float smoothSpeed = 0.1f;
         private float speed = 4f;
 
-
-
-
         #region System Function
-        private void Awake()
-        {
-             
-        }
         // Start is called before the first frame update
         void Start()
         {
@@ -46,14 +36,10 @@ namespace Player
         // Update is called once per frame
         void Update()
         {
-
+            CharacterRun();
             CharacterRoll();
             CharacterSprint();
             CharacterAttack();
-        }
-        private void FixedUpdate()
-        {
-            CharacterRun();
         }
         #endregion
         #region Charactor Movement
@@ -63,7 +49,10 @@ namespace Player
         }
         private void CharacterRoatition()
         {
-            transform.rotation = Quaternion.LookRotation(moveValue, Vector3.up);
+            if (moveValue != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(moveValue, Vector3.up);
+            }
         }
         private void CharacterRun()
         {
@@ -88,17 +77,16 @@ namespace Player
         {
             if (input.Attack && !animController.IsBusy)
             {
-                if (enemyManager.enemies.Count != 0)
-                {
-                    Enemy target = enemyManager.GetNearestTarget();
-                    if (target != null)
-                    {
+                //if (enemyManager.enemies.Count != 0)
+                //{
+                //    Enemy target = enemyManager.GetNearestTarget();
+                //    if (target != null)
+                //    {
 
-                        transform.LookAt(target.transform);
-                    }
-                }
+                //        transform.LookAt(target.transform);
+                //    }
+                //}
                 animController.OnAttack();
-
             }
         }
         private void CharacterSprint()
