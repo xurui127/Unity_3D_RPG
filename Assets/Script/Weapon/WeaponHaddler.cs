@@ -15,7 +15,6 @@ public class WeaponHaddler : MonoBehaviour
     public GameObject swordVFX;
     public void Start()
     {
-
         collider = GetComponent<BoxCollider>();
         if (StartCollider != null)
         {
